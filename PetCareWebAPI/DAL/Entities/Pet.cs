@@ -1,0 +1,36 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PetCareWebAPI.DAL.Entities
+{
+    public class Pet
+    {
+        [Key]
+        public int IdPet { get; set; }
+
+        [Display(Name = "Nombres")]
+        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        public string Name { get; set; }
+
+        [Display(Name = "Edad")]
+        public int Age { get; set; }
+
+        [Display(Name = "Color")]
+        public string Color { get; set; }
+
+        [Display(Name = "Raza")]
+        public string Race { get; set; }
+
+        [Display(Name = "Peso")]
+        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        public double Weight { get; set; }
+
+        [Display(Name = "Altura")]
+        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        public double Height { get; set; }
+        public string Description { get; set; }
+        public int IdMedicalRecord { get; set; } //FK 
+    }
+}
