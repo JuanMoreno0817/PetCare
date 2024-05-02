@@ -8,11 +8,19 @@ namespace PetCareWebAPI.DAL.Entities
         [Display(Name = "Ocupación")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Ocupation { get; set; }
-        public string HouseType { get; set; }
+        public HouseTypes HouseType { get; set; }
 
         [Display(Name = "Ingresos")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public SqlMoney MoneyIncome { get; set; }
+
+        public enum HouseTypes
+        {
+            Casa,
+            Apartmento,
+            Finca,
+            Cabaña
+        }
 
     }
 }

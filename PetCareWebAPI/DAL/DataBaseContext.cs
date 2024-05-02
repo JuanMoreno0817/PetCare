@@ -22,6 +22,7 @@ namespace PetCareWebAPI.DAL
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Person>().HasIndex(p => p.Identification).IsUnique();
+            modelBuilder.Entity<Person>().Property(p => p.Identification).ValueGeneratedNever(); //Campo no Identity
             modelBuilder.Entity<Appointment>().HasIndex(a => a.IDAppointment).IsUnique();
             modelBuilder.Entity<MedicalRecord>().HasIndex(m => m.IdMedicalRe).IsUnique();
             modelBuilder.Entity<AdoptionForm>().HasIndex(f => f.IdForm).IsUnique();
