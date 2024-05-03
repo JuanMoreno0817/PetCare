@@ -187,7 +187,8 @@ namespace PetCareWebAPI.DAL
                     Height = 50,
                     Weight = 20,
                     Status = 0,
-                    genero = 0
+                    genero = 0,
+                    Tipo = (Pet.Types)1
                 });
 
                 _context.Pets.Add(new Pet
@@ -200,7 +201,8 @@ namespace PetCareWebAPI.DAL
                     Height = 50,
                     Weight = 20, 
                     Status = 0,
-                    genero = (Pet.Genero)1
+                    genero = (Pet.Genero)1,
+                    Tipo = (Pet.Types)1
                 });
 
                 _context.Pets.Add(new Pet
@@ -213,7 +215,8 @@ namespace PetCareWebAPI.DAL
                     Height = 60, 
                     Weight = 30, 
                     Status = 0,
-                    genero = 0
+                    genero = 0,
+                    Tipo = (Pet.Types)1
                 });
 
                 _context.Pets.Add(new Pet
@@ -226,7 +229,8 @@ namespace PetCareWebAPI.DAL
                     Height = 40, 
                     Weight = 25,
                     Status = 0,
-                    genero = (Pet.Genero)1
+                    genero = (Pet.Genero)1,
+                    Tipo = (Pet.Types)1
                 });
 
                 _context.Pets.Add(new Pet
@@ -239,7 +243,8 @@ namespace PetCareWebAPI.DAL
                     Height = 55, 
                     Weight = 27, 
                     Status = 0,
-                    genero = 0
+                    genero = 0,
+                    Tipo = (Pet.Types)1
                 });
 
                 _context.Pets.Add(new Pet
@@ -252,7 +257,8 @@ namespace PetCareWebAPI.DAL
                     Height = 25,
                     Weight = 5,
                     Status = 0,
-                    genero = (Pet.Genero)1
+                    genero = (Pet.Genero)1,
+                    Tipo = 0
                 });
 
                 _context.Pets.Add(new Pet
@@ -265,7 +271,8 @@ namespace PetCareWebAPI.DAL
                     Height = 20, 
                     Weight = 4,
                     Status = 0,
-                    genero = 0
+                    genero = 0,
+                    Tipo = 0
                 });
 
                 _context.Pets.Add(new Pet
@@ -278,7 +285,8 @@ namespace PetCareWebAPI.DAL
                     Height = 30, 
                     Weight = 6, 
                     Status = 0,
-                    genero = (Pet.Genero)1
+                    genero = (Pet.Genero)1,
+                    Tipo = 0
                 });
 
                 
@@ -292,7 +300,8 @@ namespace PetCareWebAPI.DAL
                     Height = 22, 
                     Weight = 4, 
                     Status = 0,
-                    genero = 0
+                    genero = 0,
+                    Tipo = 0
                 });
 
                 _context.Pets.Add(new Pet
@@ -305,7 +314,8 @@ namespace PetCareWebAPI.DAL
                     Height = 28, 
                     Weight = 5, 
                     Status = 0,
-                    genero = (Pet.Genero)1
+                    genero = (Pet.Genero)1,
+                    Tipo = 0
                 });
 
             }

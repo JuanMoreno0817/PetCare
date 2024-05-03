@@ -21,8 +21,16 @@ namespace PetCareWebAPI.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Person>().HasIndex(p => p.Identification).IsUnique();
-            modelBuilder.Entity<Person>().Property(p => p.Identification).ValueGeneratedNever(); //Campo no Identity
+
+            modelBuilder.Entity<Adopter>().HasIndex(a => a.Identification).IsUnique();
+            modelBuilder.Entity<Adopter>().ToTable("Adopter");
+
+            modelBuilder.Entity<Psichologist>().HasIndex(p => p.Identification).IsUnique();
+            modelBuilder.Entity<Psichologist>().ToTable("Psichologist");
+
+            modelBuilder.Entity<Vet>().HasIndex(v => v.Identification).IsUnique();
+            modelBuilder.Entity<Vet>().ToTable("Vet");
+
             modelBuilder.Entity<Appointment>().HasIndex(a => a.IDAppointment).IsUnique();
             modelBuilder.Entity<MedicalRecord>().HasIndex(m => m.IdMedicalRe).IsUnique();
             modelBuilder.Entity<AdoptionForm>().HasIndex(f => f.IdForm).IsUnique();

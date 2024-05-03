@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PetCareWebAPI.DAL.Entities
 {
     public class Person
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)] //No identity
         [Display(Name = "Documento")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public int Identification { get; set; }

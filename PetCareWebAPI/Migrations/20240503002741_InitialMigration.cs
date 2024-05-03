@@ -37,15 +37,7 @@ namespace PetCareWebAPI.Migrations
                     Address = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Borndate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Ocupation = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HouseType = table.Column<int>(type: "int", nullable: true),
-                    MoneyIncome = table.Column<double>(type: "float", nullable: true),
-                    ProfessionalCard = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AgeExperiencie = table.Column<int>(type: "int", nullable: true),
-                    Specialization = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Vet_AgeExperiencie = table.Column<int>(type: "int", nullable: true)
+                    Borndate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,11 +59,95 @@ namespace PetCareWebAPI.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     genero = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
+                    Tipo = table.Column<int>(type: "int", nullable: false),
                     IdMedicalRecord = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pets", x => x.IdPet);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Adopter",
+                columns: table => new
+                {
+                    Identification = table.Column<int>(type: "int", nullable: false),
+                    Ocupation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HouseType = table.Column<int>(type: "int", nullable: false),
+                    MoneyIncome = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Adopter", x => x.Identification);
+                    table.ForeignKey(
+                        name: "FK_Adopter_Persons_Identification",
+                        column: x => x.Identification,
+                        principalTable: "Persons",
+                        principalColumn: "Identification",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Psichologist",
+                columns: table => new
+                {
+                    Identification = table.Column<int>(type: "int", nullable: false),
+                    ProfessionalCard = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AgeExperiencie = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Psichologist", x => x.Identification);
+                    table.ForeignKey(
+                        name: "FK_Psichologist_Persons_Identification",
+                        column: x => x.Identification,
+                        principalTable: "Persons",
+                        principalColumn: "Identification",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vet",
+                columns: table => new
+                {
+                    Identification = table.Column<int>(type: "int", nullable: false),
+                    Specialization = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AgeExperiencie = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vet", x => x.Identification);
+                    table.ForeignKey(
+                        name: "FK_Vet_Persons_Identification",
+                        column: x => x.Identification,
+                        principalTable: "Persons",
+                        principalColumn: "Identification",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AdoptionForms",
+                columns: table => new
+                {
+                    IdForm = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AdopterIdentification = table.Column<int>(type: "int", nullable: true),
+                    PetIdPet = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AdoptionForms", x => x.IdForm);
+                    table.ForeignKey(
+                        name: "FK_AdoptionForms_Adopter_AdopterIdentification",
+                        column: x => x.AdopterIdentification,
+                        principalTable: "Adopter",
+                        principalColumn: "Identification");
+                    table.ForeignKey(
+                        name: "FK_AdoptionForms_Pets_PetIdPet",
+                        column: x => x.PetIdPet,
+                        principalTable: "Pets",
+                        principalColumn: "IdPet");
                 });
 
             migrationBuilder.CreateTable(
@@ -89,36 +165,17 @@ namespace PetCareWebAPI.Migrations
                 {
                     table.PrimaryKey("PK_MedicalRecords", x => x.IdMedicalRe);
                     table.ForeignKey(
-                        name: "FK_MedicalRecords_Persons_VetIdentification",
+                        name: "FK_MedicalRecords_Vet_VetIdentification",
                         column: x => x.VetIdentification,
-                        principalTable: "Persons",
+                        principalTable: "Vet",
                         principalColumn: "Identification");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "AdoptionForms",
-                columns: table => new
-                {
-                    IdForm = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AdopterIdentification = table.Column<int>(type: "int", nullable: true),
-                    PetIdPet = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AdoptionForms", x => x.IdForm);
-                    table.ForeignKey(
-                        name: "FK_AdoptionForms_Persons_AdopterIdentification",
-                        column: x => x.AdopterIdentification,
-                        principalTable: "Persons",
-                        principalColumn: "Identification");
-                    table.ForeignKey(
-                        name: "FK_AdoptionForms_Pets_PetIdPet",
-                        column: x => x.PetIdPet,
-                        principalTable: "Pets",
-                        principalColumn: "IdPet");
-                });
+            migrationBuilder.CreateIndex(
+                name: "IX_Adopter_Identification",
+                table: "Adopter",
+                column: "Identification",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdoptionForms_AdopterIdentification",
@@ -154,15 +211,21 @@ namespace PetCareWebAPI.Migrations
                 column: "VetIdentification");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Persons_Identification",
-                table: "Persons",
+                name: "IX_Pets_IdPet",
+                table: "Pets",
+                column: "IdPet",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Psichologist_Identification",
+                table: "Psichologist",
                 column: "Identification",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pets_IdPet",
-                table: "Pets",
-                column: "IdPet",
+                name: "IX_Vet_Identification",
+                table: "Vet",
+                column: "Identification",
                 unique: true);
         }
 
@@ -179,7 +242,16 @@ namespace PetCareWebAPI.Migrations
                 name: "MedicalRecords");
 
             migrationBuilder.DropTable(
+                name: "Psichologist");
+
+            migrationBuilder.DropTable(
+                name: "Adopter");
+
+            migrationBuilder.DropTable(
                 name: "Pets");
+
+            migrationBuilder.DropTable(
+                name: "Vet");
 
             migrationBuilder.DropTable(
                 name: "Persons");

@@ -123,10 +123,6 @@ namespace PetCareWebAPI.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -147,14 +143,9 @@ namespace PetCareWebAPI.Migrations
 
                     b.HasKey("Identification");
 
-                    b.HasIndex("Identification")
-                        .IsUnique();
-
                     b.ToTable("Persons");
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
-
-                    b.UseTphMappingStrategy();
+                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.Pet", b =>
@@ -192,6 +183,9 @@ namespace PetCareWebAPI.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<int>("Tipo")
+                        .HasColumnType("int");
+
                     b.Property<double>("Weight")
                         .HasMaxLength(20)
                         .HasColumnType("float");
@@ -221,7 +215,10 @@ namespace PetCareWebAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("Adopter");
+                    b.HasIndex("Identification")
+                        .IsUnique();
+
+                    b.ToTable("Adopter", (string)null);
                 });
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.Psichologist", b =>
@@ -234,7 +231,10 @@ namespace PetCareWebAPI.Migrations
                     b.Property<string>("ProfessionalCard")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("Psichologist");
+                    b.HasIndex("Identification")
+                        .IsUnique();
+
+                    b.ToTable("Psichologist", (string)null);
                 });
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.Vet", b =>
@@ -248,13 +248,10 @@ namespace PetCareWebAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Persons", t =>
-                        {
-                            t.Property("AgeExperiencie")
-                                .HasColumnName("Vet_AgeExperiencie");
-                        });
+                    b.HasIndex("Identification")
+                        .IsUnique();
 
-                    b.HasDiscriminator().HasValue("Vet");
+                    b.ToTable("Vet", (string)null);
                 });
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.AdoptionForm", b =>
@@ -279,6 +276,33 @@ namespace PetCareWebAPI.Migrations
                         .HasForeignKey("VetIdentification");
 
                     b.Navigation("Vet");
+                });
+
+            modelBuilder.Entity("PetCareWebAPI.DAL.Entities.Adopter", b =>
+                {
+                    b.HasOne("PetCareWebAPI.DAL.Entities.Person", null)
+                        .WithOne()
+                        .HasForeignKey("PetCareWebAPI.DAL.Entities.Adopter", "Identification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PetCareWebAPI.DAL.Entities.Psichologist", b =>
+                {
+                    b.HasOne("PetCareWebAPI.DAL.Entities.Person", null)
+                        .WithOne()
+                        .HasForeignKey("PetCareWebAPI.DAL.Entities.Psichologist", "Identification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PetCareWebAPI.DAL.Entities.Vet", b =>
+                {
+                    b.HasOne("PetCareWebAPI.DAL.Entities.Person", null)
+                        .WithOne()
+                        .HasForeignKey("PetCareWebAPI.DAL.Entities.Vet", "Identification")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

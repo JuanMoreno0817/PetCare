@@ -35,6 +35,7 @@ namespace PetCareWebAPI.DAL.Entities
         public string Description { get; set; }
         public Genero genero { get; set; }
         public AdoptionStatus Status { get; set; }
+        public Types Tipo { get; set; }
         public int? IdMedicalRecord { get; set; } //FK 
 
         public enum AdoptionStatus 
@@ -47,6 +48,12 @@ namespace PetCareWebAPI.DAL.Entities
         {
             Hembra,
             Macho
+        }
+
+        public enum Types 
+        { 
+            Gato,
+            Perro
         }
     }
 }
