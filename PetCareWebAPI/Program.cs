@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PetCareWebAPI.DAL;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,25 +16,25 @@ builder.Services.AddDbContext<DataBaseContext>(o =>
     o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-//builder.Services.AddTransient<SeederDb>();
+builder.Services.AddTransient<SeederDB>();
 
-//builder.Services.AddControllers().AddJsonOptions(x =>
-//                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 
 //método para poder poblar las tablas al momento de correr la app.
-//SeederData();
-//void SeederData()
-//{
-//    IServiceScopeFactory? scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+SeederData();
+void SeederData()
+{
+    IServiceScopeFactory? scopedFactory = app.Services.GetService<IServiceScopeFactory>();
 
-//    using (IServiceScope? scope = scopedFactory.CreateScope())
-//    {
-//        SeederDb? service = scope.ServiceProvider.GetService<SeederDb>();
-//        service.SeederAsync().Wait();
-//    }
-//}
+    using (IServiceScope? scope = scopedFactory.CreateScope())
+    {
+        SeederDB? service = scope.ServiceProvider.GetService<SeederDB>();
+        service.SeederAsync().Wait();
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

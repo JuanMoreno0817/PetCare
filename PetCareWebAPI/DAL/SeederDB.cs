@@ -38,7 +38,7 @@ namespace PetCareWebAPI.DAL
                     Email = "luisgutierrez@correo.com",
                     Borndate = new DateTime(2000, 05, 25),
                     HouseType = 0,
-                    MoneyIncome = new SqlMoney(3000000),
+                    MoneyIncome = 3000000,
                     Ocupation = "Teacher",
                     Password = "12345"
                 });
@@ -53,7 +53,7 @@ namespace PetCareWebAPI.DAL
                     Email = "maria@correo.com",
                     Borndate = new DateTime(1995, 10, 15),
                     HouseType = (Adopter.HouseTypes)1,
-                    MoneyIncome = new SqlMoney(5000000),
+                    MoneyIncome = 5000000,
                     Ocupation = "Engineer",
                     Password = "12345"
                 });
@@ -68,7 +68,7 @@ namespace PetCareWebAPI.DAL
                     Email = "laura@correo.com",
                     Borndate = new DateTime(1990, 3, 10),
                     HouseType = (Adopter.HouseTypes)3,
-                    MoneyIncome = new SqlMoney(6000000),
+                    MoneyIncome = 6000000,
                     Ocupation = "Artist",
                     Password = "12345"
                 });
@@ -83,7 +83,7 @@ namespace PetCareWebAPI.DAL
                     Email = "ana@correo.com",
                     Borndate = new DateTime(1988, 12, 5),
                     HouseType = (Adopter.HouseTypes)2,
-                    MoneyIncome = new SqlMoney(4000000),
+                    MoneyIncome = 4000000,
                     Ocupation = "Doctor",
                     Password = "12345"
                 });
@@ -98,7 +98,7 @@ namespace PetCareWebAPI.DAL
                     Email = "carlos@correo.com",
                     Borndate = new DateTime(1976, 7, 20),
                     HouseType = (Adopter.HouseTypes)2,
-                    MoneyIncome = new SqlMoney(2800000),
+                    MoneyIncome = 2800000,
                     Ocupation = "Nurse",
                     Password = "12345"
                 });
@@ -159,7 +159,7 @@ namespace PetCareWebAPI.DAL
 
                 _context.Vets.Add(new Vet
                 {
-                    Identification = 31241,
+                    Identification = 34145,
                     Name = "Mariangel",
                     Lastname = "Cardenas",
                     Cellphone = "3109876523",
