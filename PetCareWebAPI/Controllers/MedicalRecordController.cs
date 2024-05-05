@@ -86,7 +86,7 @@ namespace PetCareWebAPI.Controllers
         [Route("Delete/{id}")]
         public async Task<IActionResult> DeleteMedicalRecord(int id)
         {
-            var medicalRecord = await _context.MedicalRecords.FirstOrDefaultAsync(a => a.IdMedicalre == id);
+            var medicalRecord = await _context.MedicalRecords.FirstOrDefaultAsync(a => a.IdMedicalRe == id);
 
             if (medicalRecord == null) return NotFound("Medical record not found");
 
