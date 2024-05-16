@@ -1,12 +1,12 @@
-<div class="row h-75 m-0" style="background-color: rgb(227, 205, 156);">
+<div class="row h-100 m-0" style="background-color: rgb(227, 205, 156);">
     <div class="col-4 p-5 h-100">
-        <div class="bg-light p-3 rounded shadow h-100">
+        <div class="bg-secondary bg-opacity-25 p-3 rounded shadow h-100">
             <h1 class="fs-3">Acerca de</h1>
         </div>
     </div>
     <div class="col-8 p-5 ">
         <div class="row mb-4">
-            <div class="col bg-light p-3 rounded shadow h-50">
+            <div class="col bg-secondary bg-opacity-25 p-3 rounded shadow h-50">
                 <h1 class="fs-3 text-center">Citas</h1>
                 <div class="d-flex gap-2 my-2">
                     <button type="button" class="btn btn-primary w-50">Ver citas</button>
@@ -19,8 +19,48 @@
             </div>
         </div>
         <div class="row">
-            <div class="col bg-light p-3 rounded shadow h-50">
-                <h1 class="fs-3">Acerca de</h1>
+            <div class="col bg-secondary bg-opacity-25 p-3 rounded shadow h-50">
+                <form id="nuevaCita">
+                    <h1 class="fs-3 text-center mb-3">Crear cita</h1>
+                    <div class="row justify-content-between gap-2">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Id Cita</span>
+                                <input type="number" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Creacion</span>
+                                <input type="date" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Psicólogo</span>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Adoptante</span>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-floating h-100">
+                                <textarea class="form-control h-100" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
+                                <label for="floatingTextarea2">Observaciones</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
