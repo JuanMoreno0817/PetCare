@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PsicologoComponent } from './psicologo/psicologo.component';
 import { VeterinarioComponent } from './veterinario/veterinario.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     PsicologoComponent,
     VeterinarioComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
