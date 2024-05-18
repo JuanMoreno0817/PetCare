@@ -1,32 +1,40 @@
-<div class="container my-2 px-5">
-    <div class="row bg-secondary bg-opacity-25 p-4 mx-0 my-4 rounded shadow-lg">
-        <div class="col-lg-6 col-md-6 col-sm-auto text-center my-auto">
-            <h1 class="fs-3 fw-bold">Fundación Pet Care</h1>
-            <h1 class="fs-5">
+<div class="container-fluid px-5">
+    <div class="row p-4 mx-0 rounded">
+        <div class="col-lg-5 col-md-5 col-sm-auto p-0">
+            <img src="../../assets/Mascotas.png" class="w-100" />
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-auto text-center my-auto p-0">
+            <h1 class="fs-2 fw-bold">Fundación Pet Care</h1>
+            <h1 class="fs-4 mb-3">
                 ¡Únete a nuestra fundación de adopción de mascotas y ayuda a salvar vidas! Juntos, podemos
                 encontrar hogares amorosos para animales necesitados, promover la tenencia responsable de
                 mascotas ¡Adopta, no compres, y haz la diferencia hoy mismo!
             </h1>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-auto">
-            <img src="../../assets/perroImgHome.png" class="w-100" />
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-auto my-auto text-center">
-            <button type="button" class="btn btn-green shadow my-2 rounded-pill">¿Quieres ser voluntario?</button>
-            <button type="button" class="btn btn-green shadow my-2 rounded-pill">¿Quieres adoptar?</button>
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-green fw-bold shadow mx-3 my-2"><img src="../../assets/Huella.png"
+                        class="mb-1" width="20" /> ¿Quieres ser voluntario?</button>
+                <button type="button" class="btn btn-green fw-bold shadow mx-3 my-2"><img src="../../assets/Huella.png"
+                        class="mb-1" width="20" /> ¿Quieres adoptar?</button>
+            </div>
         </div>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="row my-3 mx-0">
-        <div class="col-lg-3 col-md-3 col-sm-auto my-auto text-center">
-            <h1 class="fs-5">
-                Estas son algunas de nuestras mascotas disponibles. ¿Quieres ver más?
+<div class="container-fluid px-3 pb-3">
+    <div class="row mx-0 p-4 rounded" style="background-color: #E1C482;">
+        <div class="col-lg-3 col-md-3 col-sm-auto my-auto text-center pe-3">
+            <h1 class="fs-4 px-2">
+                ¡Mira algunas de nuestras bellas mascotas! <br> ¡Conviértete en uno de sus orgullosos dueños! ¿Quieres
+                ver más?
             </h1>
-            <button type="button" class="btn btn-green shadow my-2">Ir a galería</button>
+            <button type="button" class="btn btn-green fw-bold shadow my-2"><img src="../../assets/Huella.png"
+                    class="mb-1" width="20" /> Ir a galería</button>
         </div>
-        <div class="col-lg-9 col-md-9 col-sm-auto" style="overflow-x: scroll;">
-            <div class="d-flex gap-2">
+        <div class="col-lg-9 col-md-9 col-sm-auto rounded px-3 py-2" style="background-color: #EEBA6C;">
+            <div class="d-flex w-100 gap-2 py-2" style="overflow-x: auto; max-width: 100%;">
+                <app-carta></app-carta>
+                <app-carta></app-carta>
+                <app-carta></app-carta>
+                <app-carta></app-carta>
                 <app-carta></app-carta>
                 <app-carta></app-carta>
                 <app-carta></app-carta>
