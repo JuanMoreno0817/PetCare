@@ -8,6 +8,7 @@ import { PsicologoComponent } from './psicologo/psicologo.component';
 import { VeterinarioComponent } from './veterinario/veterinario.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { CartaComponent } from './carta/carta.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeComponent } from './home/home.component';
     PsicologoComponent,
     VeterinarioComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    CartaComponent
   ],
   imports: [
     BrowserModule,
