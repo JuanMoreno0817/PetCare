@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { CartaComponent } from './carta/carta.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     VeterinarioComponent,
     FooterComponent,
     HomeComponent,
-    CartaComponent
+    CartaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
