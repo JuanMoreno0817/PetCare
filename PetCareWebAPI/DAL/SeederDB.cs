@@ -19,9 +19,161 @@ namespace PetCareWebAPI.DAL
             await PopulateAdopterAsync();
             await PopulatePsichologistAsync();
             await PopulateVetAsync();
+            await PopulateMedicalRecordAsync();
             await PopulatePetAsync();
+            await PopulateAdoptionFormAsync();
+        }
 
-            await _context.SaveChangesAsync();
+        private async Task PopulatePetAsync()
+        {
+            if (!_context.Pets.Any())
+            {
+                _context.Pets.Add(new Pet
+                {
+                    Name = "Firulais",
+                    Age = 1,
+                    Color = "Negro",
+                    Race = "Criollo",
+                    Description = "Amoroso, juguetón y leal.",
+                    Height = 50,
+                    Weight = 20,
+                    Status = 0,
+                    genero = 0,
+                    Tipo = (Pet.Types)1,
+                    IdMedicalRecord = 3
+                });
+
+                _context.Pets.Add(new Pet
+                {
+                    Name = "Pelusa",
+                    Age = 3,
+                    Color = "Negro con Blanco",
+                    Race = "Border Collie",
+                    Description = "Amoroso, juguetón y muy inteligente.",
+                    Height = 50,
+                    Weight = 20,
+                    Status = 0,
+                    genero = (Pet.Genero)1,
+                    Tipo = (Pet.Types)1
+                });
+
+                _context.Pets.Add(new Pet
+                {
+                    Name = "Max",
+                    Age = 2,
+                    Color = "Dorado",
+                    Race = "Labrador Retriever",
+                    Description = "Juguetón, amigable y fácil de entrenar.",
+                    Height = 60,
+                    Weight = 30,
+                    Status = 0,
+                    genero = 0,
+                    Tipo = (Pet.Types)1
+                });
+
+                _context.Pets.Add(new Pet
+                {
+                    Name = "Buddy",
+                    Age = 4,
+                    Color = "Atigrado",
+                    Race = "Bulldog Inglés",
+                    Description = "Leal, valiente y cariñoso.",
+                    Height = 40,
+                    Weight = 25,
+                    Status = 0,
+                    genero = (Pet.Genero)1,
+                    Tipo = (Pet.Types)1,
+                    IdMedicalRecord = 1
+                });
+
+                _context.Pets.Add(new Pet
+                {
+                    Name = "Sol",
+                    Age = 1,
+                    Color = "Dorado",
+                    Race = "Golden Retriever",
+                    Description = "Amigable, inteligente y activo.",
+                    Height = 55,
+                    Weight = 27,
+                    Status = 0,
+                    genero = 0,
+                    Tipo = (Pet.Types)1
+                });
+
+                _context.Pets.Add(new Pet
+                {
+                    Name = "Milo",
+                    Age = 2,
+                    Color = "Blanco",
+                    Race = "Persa",
+                    Description = "Elegante, tranquilo y amoroso.",
+                    Height = 25,
+                    Weight = 5,
+                    Status = 0,
+                    genero = (Pet.Genero)1,
+                    Tipo = 0
+                });
+
+                _context.Pets.Add(new Pet
+                {
+                    Name = "Nina",
+                    Age = 1,
+                    Color = "Punto de lince",
+                    Race = "Siames",
+                    Description = "Vocal, inteligente y afectuoso.",
+                    Height = 20,
+                    Weight = 4,
+                    Status = 0,
+                    genero = 0,
+                    Tipo = 0
+                });
+
+                _context.Pets.Add(new Pet
+                {
+                    Name = "Simba",
+                    Age = 3,
+                    Color = "Atigrado",
+                    Race = "Maine Coon",
+                    Description = "Amigable, activo y juguetón.",
+                    Height = 30,
+                    Weight = 6,
+                    Status = 0,
+                    genero = (Pet.Genero)1,
+                    Tipo = 0
+                });
+
+
+                _context.Pets.Add(new Pet
+                {
+                    Name = "Oreo",
+                    Age = 1,
+                    Color = "Negro y blanco",
+                    Race = "Criollo",
+                    Description = "Tranquilo, cariñoso y curioso.",
+                    Height = 22,
+                    Weight = 4,
+                    Status = 0,
+                    genero = 0,
+                    Tipo = 0
+                });
+
+                _context.Pets.Add(new Pet
+                {
+                    Name = "Tigre",
+                    Age = 2,
+                    Color = "Atigrado",
+                    Race = "Bengalí",
+                    Description = "Energético, juguetón y enérgico.",
+                    Height = 28,
+                    Weight = 5,
+                    Status = 0,
+                    genero = (Pet.Genero)1,
+                    Tipo = 0,
+                    IdMedicalRecord = 2
+                });
+
+                await _context.SaveChangesAsync();
+            }
         }
 
         private async Task PopulateAdopterAsync() 
@@ -102,6 +254,8 @@ namespace PetCareWebAPI.DAL
                     Ocupation = "Nurse",
                     Password = "12345"
                 });
+
+                await _context.SaveChangesAsync();
             }
         }
 
@@ -136,6 +290,22 @@ namespace PetCareWebAPI.DAL
                     ProfessionalCard = "00002",
                     Password = "12345"
                 });
+
+                _context.Psichologists.Add(new Psichologist
+                {
+                    Identification = 62323,
+                    Name = "Manuela",
+                    Lastname = "Mosquera",
+                    Cellphone = "3235678943",
+                    Address = "Cll 30",
+                    Email = "manuela@correo.com",
+                    Borndate = new DateTime(1996, 12, 2),
+                    AgeExperiencie = 7,
+                    ProfessionalCard = "00003",
+                    Password = "12345"
+                });
+
+                await _context.SaveChangesAsync();
             }
         }
 
@@ -170,154 +340,88 @@ namespace PetCareWebAPI.DAL
                     Specialization = "Fisioterapia",
                     Password = "12345"
                 });
+
+                _context.Vets.Add(new Vet
+                {
+                    Identification = 34555,
+                    Name = "Marcela",
+                    Lastname = "Muñoz",
+                    Cellphone = "3176523123",
+                    Address = "Av 5",
+                    Email = "marcela@correo.com",
+                    Borndate = new DateTime(1980, 2, 10),
+                    AgeExperiencie = 6,
+                    Specialization = "Cirugía",
+                    Password = "12345"
+                });
+
+                await _context.SaveChangesAsync();
             }
         }
 
-        private async Task PopulatePetAsync()
+        private async Task PopulateMedicalRecordAsync() 
         {
-            if (!_context.Pets.Any())
+            if (!_context.MedicalRecords.Any()) 
             {
-                _context.Pets.Add(new Pet 
-                { 
-                    Name = "Firulais",
-                    Age = 1,
-                    Color = "Negro",
-                    Race = "Criollo",
-                    Description = "Amoroso, juguetón y leal.",
-                    Height = 50,
-                    Weight = 20,
-                    Status = 0,
-                    genero = 0,
-                    Tipo = (Pet.Types)1
-                });
-
-                _context.Pets.Add(new Pet
+                var vet = _context.Vets.FirstOrDefault(v => v.Identification == 34145);
+                _context.MedicalRecords.Add(new MedicalRecord
                 {
-                    Name = "Pelusa",
-                    Age = 3,
-                    Color = "Negro con Blanco",
-                    Race = "Border Collie",
-                    Description = "Amoroso, juguetón y muy inteligente.",
-                    Height = 50,
-                    Weight = 20, 
-                    Status = 0,
-                    genero = (Pet.Genero)1,
-                    Tipo = (Pet.Types)1
+                    CreateDate = DateTime.Now,
+                    Description = "Revisión inicial, se encuentra en óptimas condiciones, se le aplicaron las 2 primeras vacunas y se desparasito",
+                    Vet = vet
                 });
 
-                _context.Pets.Add(new Pet
+                _context.MedicalRecords.Add(new MedicalRecord
                 {
-                    Name = "Max",
-                    Age = 2,
-                    Color = "Dorado",
-                    Race = "Labrador Retriever",
-                    Description = "Juguetón, amigable y fácil de entrenar.",
-                    Height = 60, 
-                    Weight = 30, 
-                    Status = 0,
-                    genero = 0,
-                    Tipo = (Pet.Types)1
+                    CreateDate = DateTime.Now,
+                    Description = "Revisión inicial, se encuentra en óptimas condiciones y se desparasito",
+                    Vet = vet
                 });
 
-                _context.Pets.Add(new Pet
+                _context.MedicalRecords.Add(new MedicalRecord
                 {
-                    Name = "Buddy",
-                    Age = 4,
-                    Color = "Atigrado",
-                    Race = "Bulldog Inglés",
-                    Description = "Leal, valiente y cariñoso.",
-                    Height = 40, 
-                    Weight = 25,
-                    Status = 0,
-                    genero = (Pet.Genero)1,
-                    Tipo = (Pet.Types)1
+                    CreateDate = DateTime.Now,
+                    Description = "Revisión inicial, se encuentra deshidratado, se desparasito y en 5 horas se le aplicara suero.",
+                    Vet = vet
                 });
 
-                _context.Pets.Add(new Pet
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        private async Task PopulateAdoptionFormAsync() 
+        {
+            if (!_context.AdoptionForms.Any()) 
+            {
+                var pet1 = _context.Pets.FirstOrDefault(p => p.IdPet == 1);
+                var pet4 = _context.Pets.FirstOrDefault(p => p.IdPet == 4);
+                var pet10 = _context.Pets.FirstOrDefault(p => p.IdPet == 10);
+
+                var adopter1 = _context.Adopters.FirstOrDefault(p => p.Identification == 12345);
+                var adopter2 = _context.Adopters.FirstOrDefault(p => p.Identification == 67890);
+                var adopter3 = _context.Adopters.FirstOrDefault(p => p.Identification == 24680);
+                _context.AdoptionForms.Add(new AdoptionForm
                 {
-                    Name = "Sol",
-                    Age = 1,
-                    Color = "Dorado",
-                    Race = "Golden Retriever",
-                    Description = "Amigable, inteligente y activo.",
-                    Height = 55, 
-                    Weight = 27, 
-                    Status = 0,
-                    genero = 0,
-                    Tipo = (Pet.Types)1
+                    CreateDate = DateTime.Now,
+                    Adopter = adopter1,
+                    Pet = pet1
                 });
 
-                _context.Pets.Add(new Pet
+                _context.AdoptionForms.Add(new AdoptionForm
                 {
-                    Name = "Milo",
-                    Age = 2,
-                    Color = "Blanco",
-                    Race = "Persa",
-                    Description = "Elegante, tranquilo y amoroso.",
-                    Height = 25,
-                    Weight = 5,
-                    Status = 0,
-                    genero = (Pet.Genero)1,
-                    Tipo = 0
+                    CreateDate = DateTime.Now,
+                    Adopter = adopter2,
+                    Pet = pet10
                 });
 
-                _context.Pets.Add(new Pet
+                _context.AdoptionForms.Add(new AdoptionForm
                 {
-                    Name = "Nina",
-                    Age = 1,
-                    Color = "Punto de lince",
-                    Race = "Siames",
-                    Description = "Vocal, inteligente y afectuoso.",
-                    Height = 20, 
-                    Weight = 4,
-                    Status = 0,
-                    genero = 0,
-                    Tipo = 0
+                    CreateDate = DateTime.Now,
+                    Adopter = adopter3,
+                    Pet = pet4
                 });
 
-                _context.Pets.Add(new Pet
-                {
-                    Name = "Simba",
-                    Age = 3,
-                    Color = "Atigrado",
-                    Race = "Maine Coon",
-                    Description = "Amigable, activo y juguetón.",
-                    Height = 30, 
-                    Weight = 6, 
-                    Status = 0,
-                    genero = (Pet.Genero)1,
-                    Tipo = 0
-                });
-
-                
-                _context.Pets.Add(new Pet
-                {
-                    Name = "Oreo",
-                    Age = 1,
-                    Color = "Negro y blanco",
-                    Race = "Criollo",
-                    Description = "Tranquilo, cariñoso y curioso.",
-                    Height = 22, 
-                    Weight = 4, 
-                    Status = 0,
-                    genero = 0,
-                    Tipo = 0
-                });
-
-                _context.Pets.Add(new Pet
-                {
-                    Name = "Tigre",
-                    Age = 2,
-                    Color = "Atigrado",
-                    Race = "Bengalí",
-                    Description = "Energético, juguetón y enérgico.",
-                    Height = 28, 
-                    Weight = 5, 
-                    Status = 0,
-                    genero = (Pet.Genero)1,
-                    Tipo = 0
-                });
-
+                await _context.SaveChangesAsync();
             }
         }
     }
