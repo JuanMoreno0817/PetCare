@@ -12,21 +12,6 @@ namespace PetCareWebAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Appointments",
-                columns: table => new
-                {
-                    IDAppointment = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AppointmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IdAdopter = table.Column<int>(type: "int", nullable: false),
-                    IdPsicho = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Appointments", x => x.IDAppointment);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Persons",
                 columns: table => new
                 {
@@ -131,7 +116,7 @@ namespace PetCareWebAPI.Migrations
                 {
                     IdForm = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AdopterIdentification = table.Column<int>(type: "int", nullable: true),
                     PetIdPet = table.Column<int>(type: "int", nullable: true)
                 },
@@ -151,13 +136,38 @@ namespace PetCareWebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Appointments",
+                columns: table => new
+                {
+                    IDAppointment = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AppointmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AdopterIdentification = table.Column<int>(type: "int", nullable: true),
+                    PsichologistIdentification = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Appointments", x => x.IDAppointment);
+                    table.ForeignKey(
+                        name: "FK_Appointments_Adopter_AdopterIdentification",
+                        column: x => x.AdopterIdentification,
+                        principalTable: "Adopter",
+                        principalColumn: "Identification");
+                    table.ForeignKey(
+                        name: "FK_Appointments_Psichologist_PsichologistIdentification",
+                        column: x => x.PsichologistIdentification,
+                        principalTable: "Psichologist",
+                        principalColumn: "Identification");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MedicalRecords",
                 columns: table => new
                 {
                     IdMedicalRe = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     VetIdentification = table.Column<int>(type: "int", nullable: true)
                 },
@@ -194,10 +204,20 @@ namespace PetCareWebAPI.Migrations
                 column: "PetIdPet");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Appointments_AdopterIdentification",
+                table: "Appointments",
+                column: "AdopterIdentification");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Appointments_IDAppointment",
                 table: "Appointments",
                 column: "IDAppointment",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointments_PsichologistIdentification",
+                table: "Appointments",
+                column: "PsichologistIdentification");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MedicalRecords_IdMedicalRe",
@@ -242,13 +262,13 @@ namespace PetCareWebAPI.Migrations
                 name: "MedicalRecords");
 
             migrationBuilder.DropTable(
-                name: "Psichologist");
+                name: "Pets");
 
             migrationBuilder.DropTable(
                 name: "Adopter");
 
             migrationBuilder.DropTable(
-                name: "Pets");
+                name: "Psichologist");
 
             migrationBuilder.DropTable(
                 name: "Vet");

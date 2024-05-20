@@ -12,7 +12,7 @@ using PetCareWebAPI.DAL;
 namespace PetCareWebAPI.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240503002741_InitialMigration")]
+    [Migration("20240520225423_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -36,7 +36,7 @@ namespace PetCareWebAPI.Migrations
                     b.Property<int?>("AdopterIdentification")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("PetIdPet")
@@ -62,19 +62,23 @@ namespace PetCareWebAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IDAppointment"));
 
+                    b.Property<int?>("AdopterIdentification")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdAdopter")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdPsicho")
+                    b.Property<int?>("PsichologistIdentification")
                         .HasColumnType("int");
 
                     b.HasKey("IDAppointment");
 
+                    b.HasIndex("AdopterIdentification");
+
                     b.HasIndex("IDAppointment")
                         .IsUnique();
+
+                    b.HasIndex("PsichologistIdentification");
 
                     b.ToTable("Appointments");
                 });
@@ -87,13 +91,13 @@ namespace PetCareWebAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMedicalRe"));
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("VetIdentification")
@@ -270,6 +274,21 @@ namespace PetCareWebAPI.Migrations
                     b.Navigation("Adopter");
 
                     b.Navigation("Pet");
+                });
+
+            modelBuilder.Entity("PetCareWebAPI.DAL.Entities.Appointment", b =>
+                {
+                    b.HasOne("PetCareWebAPI.DAL.Entities.Adopter", "Adopter")
+                        .WithMany()
+                        .HasForeignKey("AdopterIdentification");
+
+                    b.HasOne("PetCareWebAPI.DAL.Entities.Psichologist", "Psichologist")
+                        .WithMany()
+                        .HasForeignKey("PsichologistIdentification");
+
+                    b.Navigation("Adopter");
+
+                    b.Navigation("Psichologist");
                 });
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.MedicalRecord", b =>

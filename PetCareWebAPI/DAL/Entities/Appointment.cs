@@ -7,7 +7,7 @@ namespace PetCareWebAPI.DAL.Entities
         [Key]
         public int IDAppointment { get; set; }
         public DateTime AppointmentDate { get; set; }
-        public int IdAdopter { get; set; } //FK
-        public int IdPsicho { get; set; } //FK
+        public Adopter Adopter { get; set; } //FK
+        public Psichologist Psichologist { get; set; } //FK
     }
 }
