@@ -42,6 +42,7 @@ namespace PetCareWebAPI.Controllers
         {
             try
             {
+                medicalRecord.CreateDate = DateTime.Now;
                 _context.MedicalRecords.Add(medicalRecord);
                 await _context.SaveChangesAsync();
             }
@@ -65,7 +66,7 @@ namespace PetCareWebAPI.Controllers
             try
             {
                 if (id != medicalRecord.IdMedicalRe) return NotFound("Medical record not found");
-
+                medicalRecord.UpdateDate = DateTime.Now;
                 _context.MedicalRecords.Update(medicalRecord);
                 await _context.SaveChangesAsync();
             }

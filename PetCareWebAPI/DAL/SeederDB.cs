@@ -21,7 +21,13 @@ namespace PetCareWebAPI.DAL
             await PopulateVetAsync();
             await PopulateMedicalRecordAsync();
             await PopulatePetAsync();
-            await PopulateAdoptionFormAsync();
+
+            var adopter1 = _context.Adopters.FirstOrDefault(p => p.Identification == 12345);
+            var adopter2 = _context.Adopters.FirstOrDefault(p => p.Identification == 67890);
+            var adopter3 = _context.Adopters.FirstOrDefault(p => p.Identification == 24680);
+
+            await PopulateAdoptionFormAsync(adopter1,adopter2,adopter3);
+            await PopulateAppointmentAsync(adopter1,adopter2,adopter3);
         }
 
         private async Task PopulatePetAsync()
@@ -389,7 +395,7 @@ namespace PetCareWebAPI.DAL
             }
         }
 
-        private async Task PopulateAdoptionFormAsync() 
+        private async Task PopulateAdoptionFormAsync(Adopter adopter1, Adopter adopter2, Adopter adopter3) 
         {
             if (!_context.AdoptionForms.Any()) 
             {
@@ -397,9 +403,6 @@ namespace PetCareWebAPI.DAL
                 var pet4 = _context.Pets.FirstOrDefault(p => p.IdPet == 4);
                 var pet10 = _context.Pets.FirstOrDefault(p => p.IdPet == 10);
 
-                var adopter1 = _context.Adopters.FirstOrDefault(p => p.Identification == 12345);
-                var adopter2 = _context.Adopters.FirstOrDefault(p => p.Identification == 67890);
-                var adopter3 = _context.Adopters.FirstOrDefault(p => p.Identification == 24680);
                 _context.AdoptionForms.Add(new AdoptionForm
                 {
                     CreateDate = DateTime.Now,
@@ -419,6 +422,36 @@ namespace PetCareWebAPI.DAL
                     CreateDate = DateTime.Now,
                     Adopter = adopter3,
                     Pet = pet4
+                });
+
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        private async Task PopulateAppointmentAsync(Adopter adopter1, Adopter adopter2, Adopter adopter3) 
+        {
+            if (!_context.Appointments.Any()) 
+            {
+                var psichologist = _context.Psichologists.FirstOrDefault(p => p.Identification == 76321);
+                _context.Appointments.Add(new Appointment 
+                { 
+                    Adopter = adopter1,
+                    Psichologist = psichologist,
+                    AppointmentDate = new DateTime(2024, 05, 25, 14, 30,0)
+                });
+
+                _context.Appointments.Add(new Appointment
+                {
+                    Adopter = adopter2,
+                    Psichologist = psichologist,
+                    AppointmentDate = new DateTime(2024, 05, 26, 14, 30, 0)
+                });
+
+                _context.Appointments.Add(new Appointment
+                {
+                    Adopter = adopter3,
+                    Psichologist = psichologist,
+                    AppointmentDate = new DateTime(2024, 05, 27, 14, 30, 0)
                 });
 
                 await _context.SaveChangesAsync();

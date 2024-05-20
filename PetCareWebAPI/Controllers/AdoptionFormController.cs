@@ -42,6 +42,7 @@ namespace PetCareWebAPI.Controllers
         {
             try
             {
+                adoptionForm.CreateDate = DateTime.Now;
                 _context.AdoptionForms.Add(adoptionForm);
                 await _context.SaveChangesAsync();
             }
