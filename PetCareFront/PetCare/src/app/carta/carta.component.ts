@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-carta',
@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./carta.component.css']
 })
 export class CartaComponent {
+  @Input() descripcion: string = '';
+  @Input() img: string = '';
 
+  
+  ngOnInit(): void {
+    // Inicialización usando @Input
+    console.log('Nombre:', this.descripcion);
+    console.log('Edad:', this.img);
+  }
 }

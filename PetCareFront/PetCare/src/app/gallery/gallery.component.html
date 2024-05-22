@@ -1,51 +1,226 @@
 <div class="container-fluid px-0">
     <div class="row mx-0">
-        <div class="col-lg-2 col-md-3 col-sm-4 mx-auto bg-secondary py-3 border-end border-secondary">
-            <div class="fs-3">Filtros</div>
+        <div class="col-lg-2 col-md-3 col-sm-4 mx-auto py-3 " style="background-color: #EEBA6C;">
+            <div class="fs-3">Buscar</div>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary" type="submit">Busqueda</button>
+            </form>
+            <div class="fs-3 mt-3">Filtros</div>
+            <div class="fs-5 my-2">Edad</div>
+            <div class="d-flex gap-2">
+                <div class="input-group input-group-sm">
+                    <input type="text" placeholder="Min" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div>-</div>
+                <div class="input-group input-group-sm">
+                    <input type="text" placeholder="Max" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm">
+                </div>
+            </div>
+            <div class="fs-5 my-2">Mascota</div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Perros
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Gatos
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Todos
+                    </label>
+                </div>
+            </div>
+            <div class="fs-5 my-2">Sexo</div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Hembra
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Macho
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Todos
+                    </label>
+                </div>
+            </div>
+            <div class="fs-5 my-2">Pelaje</div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Default checkbox
+                    Negro
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Blanco
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
                 <label class="form-check-label" for="flexCheckChecked">
-                    Checked checkbox
+                    Naranja
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Default checkbox
+                    Manchas
                 </label>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                <label class="form-check-label" for="flexCheckChecked">
-                    Checked checkbox
-                </label>
+            <div class="mt-2">
+                <button class="btn btn-primary">Filtrar</button>
             </div>
         </div>
         <div class="col-lg-10 col-md-9 col-sm-8 py-3">
-            <div class="row justify-content-center fs-2 fw-bold">!!Llevate a casa uno de estos hermosos peluditos¡¡
-            </div>
+            <div class="row justify-content-center fs-1 fw-bold mb-3">Mascotas</div>
             <div class="container d-flex">
-                <div class="row">
-                    <div class="col text-center">
-                        <app-carta></app-carta>
+                <div class="row justify-content-center">
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
                     </div>
-                    <div class="col text-center">
-                        <app-carta></app-carta>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
                     </div>
-                    <div class="col text-center">
-                        <app-carta></app-carta>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
                     </div>
-                    <div class="col text-center">
-                        <app-carta></app-carta>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
                     </div>
-                    <div class="col text-center">
-                        <app-carta></app-carta>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                    </div>
+                    <div class="col-auto my-2 text-center">
+                        <app-carta [img]="'../../assets/imagenGato.jpg'"
+                            [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
                     </div>
                 </div>
             </div>

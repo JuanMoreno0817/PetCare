@@ -20,26 +20,34 @@
     </div>
 </div>
 <div class="container-fluid px-3 pb-3">
-    <div class="row mx-0 p-4 rounded text-center justify-content-center" style="background-color: #E1C482;">
-        <div class="col-lg-3 col-md-3 col-sm-auto my-auto">
+    <div class="row mx-0 p-4 rounded text-center justify-content-center align-items-center" style="background-color: #E1C482;">
+        <div class="col-lg-3 col-md-4 col-sm-auto my-auto">
             <h1 class="fs-4 px-2">
-                ¡Mira algunas de nuestras bellas mascotas! <br/> ¡Conviértete en uno de sus orgullosos dueños!<br/><br/> ¿Quieres
+                ¡Mira algunas de nuestras bellas mascotas! <br /> ¡Conviértete en uno de sus orgullosos
+                dueños!<br /><br /> ¿Quieres
                 ver más?
             </h1>
             <button type="button" class="btn btn-green fw-bold shadow my-2"><img src="../../assets/Huella.png"
                     class="mb-1" width="20" /> Ir a galería</button>
         </div>
-        <div class="col-lg-9 col-md-9 col-sm-auto rounded px-3 py-2" style="background-color: #EEBA6C;">
+        <div class="col-lg-9 col-md-8 col-sm-auto rounded px-3 py-2" style="background-color: #EEBA6C;">
             <div class="d-flex w-100 gap-2 py-2" style="overflow-x: auto; max-width: 100%;">
-                <app-carta></app-carta>
-                <app-carta></app-carta>
-                <app-carta></app-carta>
-                <app-carta></app-carta>
-                <app-carta></app-carta>
-                <app-carta></app-carta>
-                <app-carta></app-carta>
-                <app-carta></app-carta>
-                <app-carta></app-carta>
+                <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+            <app-carta [img]="'../../assets/imagenGato.jpg'"
+                [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+            <app-carta [img]="'../../assets/imagenGato.jpg'"
+                [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+            <app-carta [img]="'../../assets/imagenGato.jpg'"
+                [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+                <app-carta [img]="'../../assets/imagenPerro.jpeg'"
+                [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
+            <app-carta [img]="'../../assets/imagenGato.jpg'"
+                [descripcion]="'Some quick example text to build on the card title and make up the bulk of the cards content.'"></app-carta>
             </div>
         </div>
     </div>
