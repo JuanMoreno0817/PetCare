@@ -1,9 +1,9 @@
 <nav class="navbar bg-gradient justify-content-between shadow px-4" style="background-color: #faaf6b">
-  <a class="navbar-brand fw-bold">PetCare</a>
+  <a class="navbar-brand fw-bold" routerLink="home"><img src="../../assets/Logo.png" class="" width="150" /></a>
   <div class="d-flex gap-2">
-    <button type="button" class="btn btn-sm btn-outline-success">Ingresar</button>
-    <button type="button" class="btn btn-success">Registrate</button>
-    <div class="dropdown my-auto" hidden>
+    <a type="button" class="btn btn-sm btn-outline-blue my-auto" routerLink="login">Ingresar</a>
+    <a type="button" class="btn btn-green" routerLink="signin">Regístrate</a>
+    <!--<div class="dropdown my-auto">
       <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Dropdown button
       </button>
@@ -12,9 +12,11 @@
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
       </ul>
-    </div>
+    </div>-->
     <div class="rounded-circle shadow-lg my-1 mx-1">
-      <img src="../../assets/person-circle.svg" class="" width="32" />
+      <a routerLink="veterinario">
+        <img src="../../assets/person-circle.svg" class="" width="32" />
+      </a>
     </div>
   </div>
 </nav>

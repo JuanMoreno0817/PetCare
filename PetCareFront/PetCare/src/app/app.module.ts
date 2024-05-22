@@ -12,6 +12,7 @@ import { CartaComponent } from './carta/carta.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { SinginComponent } from './singin/singin.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { GalleryComponent } from './gallery/gallery.component';
     HomeComponent,
     CartaComponent,
     LoginComponent,
-    GalleryComponent
+    GalleryComponent,
+    SinginComponent
   ],
   imports: [
     BrowserModule,
@@ -33,4 +35,6 @@ import { GalleryComponent } from './gallery/gallery.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }
