@@ -47,7 +47,7 @@ namespace PetCareWebAPI.Controllers
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("JWT:Key").Value));
-            var credenciales = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            var credenciales = new SigningCredentials(key, SecurityAlgorithms.Aes128CbcHmacSha256);
 
             var securityToken = new JwtSecurityToken(
                                 claims: claims,

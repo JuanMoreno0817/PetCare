@@ -34,7 +34,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization(option => 
-        option.AddPolicy("Admin", policy => policy.RequireClaim("userType","0")));
+        option.AddPolicy("Admin", policy => policy.RequireClaim("userType","Admin")));
 
 builder.Services.AddTransient<SeederDB>();
 

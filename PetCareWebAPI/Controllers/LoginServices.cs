@@ -17,7 +17,7 @@ namespace PetCareWebAPI.Controllers
         public async Task<Person?> GetPerson(LogInDTO person) 
         {
             return await _context.Persons.
-                SingleOrDefaultAsync(x => x.Address == person.Email && x.Password == person.Password);
+                SingleOrDefaultAsync(x => x.Email == person.Email && x.Password == person.Password);
         }
     }
 }
