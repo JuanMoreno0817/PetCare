@@ -198,7 +198,8 @@ namespace PetCareWebAPI.DAL
                     HouseType = 0,
                     MoneyIncome = 3000000,
                     Ocupation = "Teacher",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = (Enums.UserType)1
                 });
 
                 _context.Adopters.Add(new Adopter
@@ -213,7 +214,8 @@ namespace PetCareWebAPI.DAL
                     HouseType = (Adopter.HouseTypes)1,
                     MoneyIncome = 5000000,
                     Ocupation = "Engineer",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = (Enums.UserType)1
                 });
 
                 _context.Adopters.Add(new Adopter
@@ -228,7 +230,8 @@ namespace PetCareWebAPI.DAL
                     HouseType = (Adopter.HouseTypes)3,
                     MoneyIncome = 6000000,
                     Ocupation = "Artist",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = (Enums.UserType)1
                 });
 
                 _context.Adopters.Add(new Adopter
@@ -243,7 +246,8 @@ namespace PetCareWebAPI.DAL
                     HouseType = (Adopter.HouseTypes)2,
                     MoneyIncome = 4000000,
                     Ocupation = "Doctor",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = (Enums.UserType)1
                 });
 
                 _context.Adopters.Add(new Adopter
@@ -258,7 +262,8 @@ namespace PetCareWebAPI.DAL
                     HouseType = (Adopter.HouseTypes)2,
                     MoneyIncome = 2800000,
                     Ocupation = "Nurse",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = (Enums.UserType)1
                 });
 
                 await _context.SaveChangesAsync();
@@ -280,7 +285,8 @@ namespace PetCareWebAPI.DAL
                     Borndate = new DateTime(1980, 2, 22),
                     AgeExperiencie = 10,
                     ProfessionalCard = "00001",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = 0
                 });
 
                 _context.Psichologists.Add(new Psichologist
@@ -294,7 +300,8 @@ namespace PetCareWebAPI.DAL
                     Borndate = new DateTime(1990, 12, 24),
                     AgeExperiencie = 7,
                     ProfessionalCard = "00002",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = 0
                 });
 
                 _context.Psichologists.Add(new Psichologist
@@ -308,7 +315,8 @@ namespace PetCareWebAPI.DAL
                     Borndate = new DateTime(1996, 12, 2),
                     AgeExperiencie = 7,
                     ProfessionalCard = "00003",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = 0
                 });
 
                 await _context.SaveChangesAsync();
@@ -330,7 +338,8 @@ namespace PetCareWebAPI.DAL
                     Borndate = new DateTime(1986, 5, 10),
                     AgeExperiencie = 9,
                     Specialization = "Cirugía",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = 0
                 });
 
                 _context.Vets.Add(new Vet
@@ -344,7 +353,8 @@ namespace PetCareWebAPI.DAL
                     Borndate = new DateTime(1992, 10, 7),
                     AgeExperiencie = 6,
                     Specialization = "Fisioterapia",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = 0
                 });
 
                 _context.Vets.Add(new Vet
@@ -358,7 +368,8 @@ namespace PetCareWebAPI.DAL
                     Borndate = new DateTime(1980, 2, 10),
                     AgeExperiencie = 6,
                     Specialization = "Cirugía",
-                    Password = "12345"
+                    Password = "12345",
+                    userType = 0
                 });
 
                 await _context.SaveChangesAsync();

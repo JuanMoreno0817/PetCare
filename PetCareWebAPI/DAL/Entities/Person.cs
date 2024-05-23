@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using PetCareWebAPI.Enums;
 
 namespace PetCareWebAPI.DAL.Entities
 {
@@ -40,5 +41,7 @@ namespace PetCareWebAPI.DAL.Entities
 
         [Display(Name = "Fecha Nacimiento")]
         public DateTime Borndate { get; set; }
+
+        public UserType userType { get; set; }
     }
 }
