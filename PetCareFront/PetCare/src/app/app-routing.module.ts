@@ -34,13 +34,13 @@ const routes: Routes = [
     component: VeterinarioComponent
   },
   {
-    path: '**',
-    component: PagenfComponent
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
   },
   {
-    path: '',
-    redirectTo: '/Home',
-    pathMatch: 'full'
+    path: '**',
+    component: PagenfComponent
   }];
 
 @NgModule({

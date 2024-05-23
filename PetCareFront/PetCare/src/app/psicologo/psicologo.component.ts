@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class PsicologoComponent {
 
+  show: boolean = false;
+
+  mostrarCitas(){
+    this.show = false;
+  }
+
+  mostrarDatos(){
+    this.show = true;
+  }
 }
