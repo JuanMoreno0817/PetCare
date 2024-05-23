@@ -13,6 +13,7 @@ import { NgbCollapse, NgbDropdown, NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { LoginComponent } from './login/login.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SinginComponent } from './singin/singin.component';
+import { PagenfComponent } from './pagenf/pagenf.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SinginComponent } from './singin/singin.component';
     CartaComponent,
     LoginComponent,
     GalleryComponent,
-    SinginComponent
+    SinginComponent,
+    PagenfComponent
   ],
   imports: [
     BrowserModule,
