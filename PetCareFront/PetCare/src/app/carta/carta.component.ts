@@ -6,13 +6,13 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./carta.component.css']
 })
 export class CartaComponent {
-  @Input() descripcion: string = '';
   @Input() img: string = '';
+  @Input() descripcion: string = '';
 
   
   ngOnInit(): void {
     // Inicialización usando @Input
-    console.log('Nombre:', this.descripcion);
-    console.log('Edad:', this.img);
+    console.log('Imagen:', this.img);
+    console.log('Descripcion:', this.descripcion);
   }
 }

@@ -9,7 +9,7 @@ import { VeterinarioComponent } from './veterinario/veterinario.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { CartaComponent } from './carta/carta.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCollapse, NgbDropdown, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SinginComponent } from './singin/singin.component';
@@ -30,7 +30,9 @@ import { SinginComponent } from './singin/singin.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    NgbCollapse,
+    NgbDropdown
   ],
   providers: [],
   bootstrap: [AppComponent]
