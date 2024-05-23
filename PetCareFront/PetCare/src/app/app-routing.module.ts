@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SinginComponent } from './singin/singin.component';
+import { PagenfComponent } from './pagenf/pagenf.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'veterinario',
     component: VeterinarioComponent
+  },
+  {
+    path: '**',
+    component: PagenfComponent
   },
   {
     path: '',
