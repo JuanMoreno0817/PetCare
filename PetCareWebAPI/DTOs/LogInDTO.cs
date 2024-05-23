@@ -10,7 +10,7 @@ namespace PetCareWebAPI.DTOs
 
         [Display(Name = "Contraseña")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [MinLength(6, ErrorMessage = "El campo {0} debe tener al menos {1} carácteres.")]
+        [MinLength(5, ErrorMessage = "El campo {0} debe tener al menos {1} carácteres.")]
         public string Password { get; set; } = null!;
     }
 }
