@@ -18,6 +18,7 @@ namespace PetCareWebAPI.Controllers
             _context = context;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetAppointments")]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()

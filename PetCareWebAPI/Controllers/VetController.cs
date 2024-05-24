@@ -18,6 +18,7 @@ namespace PetCareWebAPI.Controllers
             _context = context;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetVets")]
         public async Task<ActionResult<IEnumerable<Vet>>> GetVets()
@@ -27,6 +28,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(vet);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetVet/{id}")]
         public async Task<ActionResult<Vet>> GetVetByIdentification(int id)
@@ -38,6 +40,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(vet);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost, ActionName("Create")]
         [Route("Create")]
         public async Task<ActionResult<Vet>> CreateVet(Vet vet)
@@ -60,6 +63,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(vet);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
         [Route("Edit/{id}")]
         public async Task<IActionResult> EditVet(int id, Vet vet)
@@ -84,6 +88,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(vet);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpDelete, ActionName("Delete")]
         [Route("Delete/{id}")]
         public async Task<IActionResult> DeleteVet(int id)

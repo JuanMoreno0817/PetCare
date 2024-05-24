@@ -38,6 +38,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(Pet);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost, ActionName("Create")]
         [Route("Create")]
         public async Task<ActionResult<Pet>> CreatePet(Pet Pet)
@@ -60,6 +61,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(Pet);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
         [Route("Edit/{id}")]
         public async Task<IActionResult> EditPet(int id, Pet Pet)
@@ -84,6 +86,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(Pet);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpDelete, ActionName("Delete")]
         [Route("Delete/{id}")]
         public async Task<IActionResult> DeletePet(int id)

@@ -18,6 +18,7 @@ namespace PetCareWebAPI.Controllers
             _context = context;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetMedicalRecords")]
         public async Task<ActionResult<IEnumerable<MedicalRecord>>> GetMedicalRecords()
@@ -38,6 +39,7 @@ namespace PetCareWebAPI.Controllers
             return medicalRecord;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost, ActionName("Create")]
         [Route("Create")]
         public async Task<ActionResult<MedicalRecord>> CreateMedicalRecord(MedicalRecord medicalRecord)
@@ -61,6 +63,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(medicalRecord);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
         [Route("Edit/{id}")]
         public async Task<IActionResult> EditMedicalRecord(int id, MedicalRecord medicalRecord)
@@ -85,6 +88,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(medicalRecord);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpDelete, ActionName("Delete")]
         [Route("Delete/{id}")]
         public async Task<IActionResult> DeleteMedicalRecord(int id)

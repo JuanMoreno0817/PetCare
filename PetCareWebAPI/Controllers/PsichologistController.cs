@@ -18,6 +18,7 @@ namespace PetCareWebAPI.Controllers
             _context = context;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetPsichologists")]
         public async Task<ActionResult<IEnumerable<Psichologist>>> GetPsichologists()
@@ -27,6 +28,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(Psichologist);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetPsichologist/{id}")]
         public async Task<ActionResult<Psichologist>> GetPsichologistByIdentification(int id)
@@ -38,6 +40,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(Psichologist);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost, ActionName("Create")]
         [Route("Create")]
         public async Task<ActionResult<Psichologist>> CreatePsichologist(Psichologist Psichologist)
@@ -60,6 +63,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(Psichologist);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
         [Route("Edit/{id}")]
         public async Task<IActionResult> EditPsichologist(int id, Psichologist Psichologist)
@@ -84,6 +88,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(Psichologist);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpDelete, ActionName("Delete")]
         [Route("Delete/{id}")]
         public async Task<IActionResult> DeletePsichologist(int id)

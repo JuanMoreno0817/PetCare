@@ -18,6 +18,7 @@ namespace PetCareWebAPI.Controllers
             _context = context;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetAdopters")]
         public async Task<ActionResult<IEnumerable<Adopter>>> GetAdopters()
@@ -27,6 +28,7 @@ namespace PetCareWebAPI.Controllers
             return adopters;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetAdopter/{id}")]
         public async Task<ActionResult<Adopter>> GetAdopterByIdentification(int id)
@@ -84,6 +86,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(adopter);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpDelete, ActionName("Delete")]
         [Route("Delete/{id}")]
         public async Task<IActionResult> DeleteAdopter(int id)

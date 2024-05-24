@@ -18,6 +18,7 @@ namespace PetCareWebAPI.Controllers
             _context = context;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetAdoptionForms")]
         public async Task<ActionResult<IEnumerable<AdoptionForm>>> GetAdoptionForms()
