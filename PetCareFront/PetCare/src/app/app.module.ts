@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SinginComponent } from './singin/singin.component';
 import { PagenfComponent } from './pagenf/pagenf.component';
+import { AdoptanteComponent } from './adoptante/adoptante.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PagenfComponent } from './pagenf/pagenf.component';
     LoginComponent,
     GalleryComponent,
     SinginComponent,
-    PagenfComponent
+    PagenfComponent,
+    AdoptanteComponent
   ],
   imports: [
     BrowserModule,

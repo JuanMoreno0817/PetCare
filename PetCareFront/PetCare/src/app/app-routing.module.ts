@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SinginComponent } from './singin/singin.component';
 import { PagenfComponent } from './pagenf/pagenf.component';
+import { AdoptanteComponent } from './adoptante/adoptante.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'psicologo',
     component: PsicologoComponent
+  },
+  {
+    path: 'adoptante',
+    component: AdoptanteComponent
   },
   {
     path: 'veterinario',
