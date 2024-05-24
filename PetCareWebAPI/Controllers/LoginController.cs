@@ -43,7 +43,7 @@ namespace PetCareWebAPI.Controllers
             {
                 new Claim(ClaimTypes.Name, person.Name),
                 new Claim(ClaimTypes.Email, person.Email),
-                new Claim(ClaimTypes.Role, person.userType.ToString())
+                new Claim("userType", person.userType.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("JWT:Key").Value));
