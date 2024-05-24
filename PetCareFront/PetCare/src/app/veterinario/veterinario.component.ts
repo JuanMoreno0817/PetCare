@@ -12,6 +12,7 @@ export class VeterinarioComponent implements OnInit{
   }
 
   show: boolean = false;
+  crud: number = 1;
 
   mostrarHistoriales(){
     this.show = false;

@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class PsicologoComponent {
 
   show: boolean = false;
+  crud: number = 1;
 
   mostrarCitas(){
     this.show = false;
