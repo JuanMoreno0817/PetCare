@@ -15,6 +15,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { SinginComponent } from './singin/singin.component';
 import { PagenfComponent } from './pagenf/pagenf.component';
 import { AdoptanteComponent } from './adoptante/adoptante.component';
+import { FormadoptComponent } from './formadopt/formadopt.component';
+import { FormvoluntComponent } from './formvolunt/formvolunt.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AdoptanteComponent } from './adoptante/adoptante.component';
     GalleryComponent,
     SinginComponent,
     PagenfComponent,
-    AdoptanteComponent
+    AdoptanteComponent,
+    FormadoptComponent,
+    FormvoluntComponent
   ],
   imports: [
     BrowserModule,

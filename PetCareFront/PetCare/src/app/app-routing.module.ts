@@ -8,6 +8,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { SinginComponent } from './singin/singin.component';
 import { PagenfComponent } from './pagenf/pagenf.component';
 import { AdoptanteComponent } from './adoptante/adoptante.component';
+import { FormvoluntComponent } from './formvolunt/formvolunt.component';
+import { FormadoptComponent } from './formadopt/formadopt.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,14 @@ const routes: Routes = [
   {
     path: 'veterinario',
     component: VeterinarioComponent
+  },
+  {
+    path: 'voluntario',
+    component: FormvoluntComponent
+  },
+  {
+    path: 'adopta',
+    component: FormadoptComponent
   },
   {
     path: '',
