@@ -17,6 +17,8 @@ import { PagenfComponent } from './pagenf/pagenf.component';
 import { AdoptanteComponent } from './adoptante/adoptante.component';
 import { FormadoptComponent } from './formadopt/formadopt.component';
 import { FormvoluntComponent } from './formvolunt/formvolunt.component';
+import { HttpClientModule } from '@angular/common/http'
+import {ReactiveFormsModule, FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -40,7 +42,10 @@ import { FormvoluntComponent } from './formvolunt/formvolunt.component';
     AppRoutingModule,
     NgbModule,
     NgbCollapse,
-    NgbDropdown
+    NgbDropdown,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

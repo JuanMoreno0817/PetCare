@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using PetCareWebAPI.Response;
 
 namespace PetCareWebAPI.Controllers
 {
@@ -25,16 +26,25 @@ namespace PetCareWebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LogInDTO person) 
+        public async Task<ActionResult<ResponseLogin>> Login(LogInDTO person) 
         {
+            ResponseLogin responseLogin = new ResponseLogin();
             var persona = await _services.GetPerson(person);
 
             if (persona == null)
+            {
+                responseLogin.response = "Invalid credentials"; 
+                responseLogin.status = "Error";
+                return BadRequest(responseLogin);
+            }
+
+            responseLogin.response = GenerateToken(persona);
+            if(responseLogin.response != null)
+                responseLogin.status = "ok";
+            else
                 return BadRequest();
 
-            string jwtToken = GenerateToken(persona);
-
-            return Ok(new { token = jwtToken });
+            return Ok(responseLogin);
         }
 
         private string GenerateToken(Person person) 
