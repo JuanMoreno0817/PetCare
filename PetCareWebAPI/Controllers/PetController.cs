@@ -28,10 +28,48 @@ namespace PetCareWebAPI.Controllers
         }
 
         [HttpGet, ActionName("Get")]
-        [Route("GetPet/{id}")]
+        [Route("GetPetsByType/{type}")]
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByType(int type)
+        {
+            var Pet = await _context.Pets.Where(x => x.Tipo == (Pet.Types)type).ToListAsync();
+            if (Pet == null) return NotFound();
+            return Ok(Pet);
+        }
+
+        [HttpGet, ActionName("Get")]
+        [Route("GetPetsByGender/{gender}")]
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByGender(int gender)
+        {
+            var Pet = await _context.Pets.Where(x => x.genero == (Pet.Genero)gender).ToListAsync();
+            if (Pet == null) return NotFound();
+            return Ok(Pet);
+        }
+
+        [HttpGet, ActionName("Get")]
+        [Route("GetPetsByStatus")]
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByStatus(int status)
+        {
+            var Pet = await _context.Pets.Where(x => x.Status == (Pet.AdoptionStatus)status).ToListAsync();
+            if (Pet == null) return NotFound();
+            return Ok(Pet);
+        }
+
+        [HttpGet, ActionName("Get")]
+        [Route("GetPetByIdentification/{id}")]
         public async Task<ActionResult<Pet>> GetPetByIdentification(int id)
         {
             var Pet = await _context.Pets.FirstOrDefaultAsync(v => v.IdPet == id);
+
+            if (Pet == null) return NotFound("Pet not found");
+
+            return Ok(Pet);
+        }
+
+        [HttpGet, ActionName("Get")]
+        [Route("GetPet/{name}")]
+        public async Task<ActionResult<Pet>> GetPetByName(string name)
+        {
+            var Pet = await _context.Pets.FirstOrDefaultAsync(v => v.Name == name);
 
             if (Pet == null) return NotFound("Pet not found");
 
