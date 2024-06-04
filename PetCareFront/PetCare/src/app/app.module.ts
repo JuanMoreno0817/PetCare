@@ -18,7 +18,8 @@ import { AdoptanteComponent } from './adoptante/adoptante.component';
 import { FormadoptComponent } from './formadopt/formadopt.component';
 import { FormvoluntComponent } from './formvolunt/formvolunt.component';
 import { HttpClientModule } from '@angular/common/http'
-import {ReactiveFormsModule, FormsModule} from '@angular/forms'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LogoutComponent } from './logout/logout.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms'
     PagenfComponent,
     AdoptanteComponent,
     FormadoptComponent,
-    FormvoluntComponent
+    FormvoluntComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -52,4 +54,4 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms'
 })
 export class AppModule {
 
- }
+}

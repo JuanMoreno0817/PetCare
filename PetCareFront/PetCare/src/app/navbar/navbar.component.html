@@ -4,11 +4,18 @@
       <a class="ms-2" routerLink="home"><img src="../../assets/Logo.png" class="" width="150" /></a>
     </div>
     <div class="col-auto my-auto px-0">
-      <a type="button" class="btn btn-sm btn-outline-blue my-auto mx-1" routerLink="login">Ingresar</a>
-      <a type="button" class="btn btn-green my-auto mx-1" routerLink="signin">Regístrate</a>
-      <a class="my-auto mx-1" routerLink="adoptante">
-        <img src="../../assets/person-circle.svg" class="rounded-circle" width="32" />
-      </a>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="my-auto mx-1" routerLink="adoptante">
+            <img src="../../assets/person-circle.svg" class="rounded-circle" width="32" />
+          </a>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
