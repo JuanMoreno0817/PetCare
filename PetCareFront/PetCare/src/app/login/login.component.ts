@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkLocalStorage(){
-    if(localStorage.getItem('token')){
+    if(localStorage.getItem('Token')){
       this.router.navigate(['gallery']);
     }
   }
@@ -41,11 +41,11 @@ export class LoginComponent implements OnInit {
       this.ApiService.post(form).subscribe(data => {
         let dataResponse: ResponseLogin = data;
         if (dataResponse.status == "ok") {
-          localStorage.setItem("token", dataResponse.response.token);
+          localStorage.setItem("Token", dataResponse.response);
           this.router.navigate(['gallery']);
         } else {
           this.errorStatus = true;
-          this.errorMsj = dataResponse.response.error_msj!;
+          this.errorMsj = dataResponse.response;
         }
       });
     }
