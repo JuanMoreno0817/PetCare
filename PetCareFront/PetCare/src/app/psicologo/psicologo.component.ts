@@ -32,7 +32,7 @@ export class PsicologoComponent implements OnInit{
     });
   }
 
-  show: boolean = false;
+  show: boolean = true;
   crud: number = 1;
 
   mostrarCitas(){

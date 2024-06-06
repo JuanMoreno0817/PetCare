@@ -1,3 +1,8 @@
+<div class="row">
+    <div class="col">
+        <div class="fs-1 mt-3 fw-bold text-center">Veterinario</div>
+    </div>
+</div>
 <div class="row m-0">
     <div class="col-sm-4 col-md-4 col-lg-4 p-4">
         <div class="bg-secondary bg-opacity-50 p-3 rounded shadow">
@@ -7,14 +12,16 @@
                     <button type="button" class="btn btn-secondary" (click)="mostrarDatos()">Actualizar datos</button>
                 </div>
                 <div class="d-grid my-2">
-                    <button type="button" class="btn btn-secondary" (click)="mostrarHistoriales()">Ver historial
-                        clínico</button>
+                    <button type="button" class="btn btn-secondary" (click)="mostrarHistoriales()">Ver historial clínico</button>
+                </div>
+                <div class="d-grid my-2">
+                    <button type="button" class="btn btn-secondary" (click)="mostrarMascotas()">Ver mascotas</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- Columna CRUD Historial Clínico -->
-    <div class="col-sm-7 col-md-7 col-lg-8 p-4" *ngIf="!show">
+    <div class="col-sm-7 col-md-7 col-lg-8 p-4" *ngIf="show == '2'">
         <div class="row mb-4">
             <div class="col bg-secondary bg-opacity-50 p-3 rounded shadow h-50">
                 <h1 class="fs-3 text-center">Historiales clínicos</h1>
@@ -195,7 +202,7 @@
         </div>
     </div>
     <!-- Columna actualizar datos-->
-    <div class="col-sm-7 col-md-7 col-lg-8 p-4" *ngIf="show">
+    <div class="col-sm-7 col-md-7 col-lg-8 p-4" *ngIf="show == '1'">
         <div class="row mb-4">
             <div class="col bg-secondary bg-opacity-50 p-3 rounded shadow h-50">
                 <h1 class="fs-3 text-center">Datos</h1>
@@ -271,4 +278,56 @@
             </div>
         </div>
     </div>
+    <!-- Columna Ver Mascotas-->
+     <div class="col-sm-7 col-md-7 col-lg-8 p-4" *ngIf="show == '3'">
+        <div class="bg-secondary bg-opacity-50 p-4">
+            <div class="fw-bold fs-3 text-center">Agregar mascota</div>
+            <div class="input-group my-2">
+                <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                <input type="text" class="form-control" placeholder="Apodo" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group my-2">
+                <span class="input-group-text" id="inputGroup-sizing-default">Edad</span>
+                <input type="number" class="form-control" placeholder="Años" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group my-2">
+                <span class="input-group-text" id="inputGroup-sizing-default">Color</span>
+                <input type="text" class="form-control" placeholder="Color simple" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group my-2">
+                <span class="input-group-text" id="inputGroup-sizing-default">Raza</span>
+                <input type="text" class="form-control" placeholder="Especie" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group my-2">
+                <span class="input-group-text" id="inputGroup-sizing-default">Peso</span>
+                <input type="number" class="form-control" placeholder="Altura en Kg" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group my-2">
+                <span class="input-group-text" id="inputGroup-sizing-default">Altura</span>
+                <input type="number" class="form-control" placeholder="Altura en cm" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Genero</span>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Selecciona el género</option>
+                    <option value="1">Macho</option>
+                    <option value="2">Hembra</option>
+                </select>
+            </div>
+            <div class="form-floating h-100">
+                <textarea class="form-control h-100" placeholder="Leave a comment here"
+                    id="floatingTextarea2"></textarea>
+                <label for="floatingTextarea2">Descripción o personalidad</label>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+                <a class="btn btn-success">Agregar</a>
+            </div>
+        </div>
+     </div>
 </div>

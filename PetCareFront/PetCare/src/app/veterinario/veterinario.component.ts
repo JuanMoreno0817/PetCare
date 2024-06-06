@@ -10,6 +10,8 @@ import { VeterinarioService } from './veterinario.services';
 export class VeterinarioComponent implements OnInit{
 
   medicalRecords: MedicalRecord[] = [];
+  show: string = "1";
+  crud: number = 1;
   constructor(private VeterinarioServices: VeterinarioService){}
 
   ngOnInit(): void {
@@ -19,14 +21,16 @@ export class VeterinarioComponent implements OnInit{
     });
   }
 
-  show: boolean = false;
-  crud: number = 1;
-
-  mostrarHistoriales(){
-    this.show = false;
-  }
 
   mostrarDatos(){
-    this.show = true;
+    this.show = "1";
+  }
+
+  mostrarHistoriales(){
+    this.show = "2";
+  }
+
+  mostrarMascotas(){
+    this.show = "3";
   }
 }

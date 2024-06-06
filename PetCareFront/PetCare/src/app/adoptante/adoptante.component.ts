@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AdoptanteComponent {
 
-  show: boolean = false;
+  show: boolean = true;
   crud: number = 1;
 
   mostrarProcesos(){
