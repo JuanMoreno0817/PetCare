@@ -1,22 +1,25 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Genero } from '../Entities/pet';
+import { AdoptionStatus } from '../Entities/pet';
+import { Types } from '../Entities/pet';
 
 @Component({
   selector: 'app-carta',
   templateUrl: './carta.component.html',
   styleUrls: ['./carta.component.css']
 })
-export class CartaComponent {
+export class CartaComponent implements OnInit {
   @Input() img: string = '';
-  @Input() nombre: string = '';
-  @Input() edad: string = '';
-  @Input() raza: string = '';
-
+  @Input() Name: string = '';
+  @Input() Age: number = 0;
+  @Input() Race: string = '';
+  @Input() genero: Genero = 0;
+  @Input() Status: AdoptionStatus = 0;
+  @Input() Description: string = '';
   
+  generoEnum = Genero;
+  statusEnum = AdoptionStatus;
+
   ngOnInit(): void {
-    // Inicialización usando @Input
-    console.log('Imagen:', this.img);
-    console.log('Nombre:', this.nombre);
-    console.log('Edad:', this.edad);
-    console.log('Raza:', this.raza);
   }
 }

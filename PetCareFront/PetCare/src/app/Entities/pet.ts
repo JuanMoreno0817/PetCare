@@ -1,16 +1,16 @@
 export interface Pet {
-    IdPet: number | null;
-    Name: string;
-    Age: number;
-    Color: string;
-    Race: string;
-    Weight: number;
-    Height: number;
-    Description: string;
+    idPet: number | null;
+    name: string;
+    age: number;
+    color: string;
+    race: string;
+    weight: number;
+    height: number;
+    description: string;
     genero: Genero;
-    AdoptionStatus: Status;
-    Tipo: Types;
-    IdMedicalRecord: number; //FK
+    status: AdoptionStatus;
+    tipo: Types;
+    idMedicalRecord: number | null; //FK
 }
 
 export enum Genero{
@@ -18,7 +18,7 @@ export enum Genero{
     Macho
 }
 
-export enum Status{
+export enum AdoptionStatus{
     Unadopted,
     Adopted
 }

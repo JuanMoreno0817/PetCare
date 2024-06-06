@@ -1,8 +1,11 @@
 <div class="card bg-rose" style="width: 15rem;">
     <img src={{img}} class="card-img-top" alt="...">
     <div class="card-body text-start rounded-bottom bg-rose">
-        <div class="fs-6">Nombre: {{nombre}}</div>
-        <div class="fs-6">Edad: {{edad}} años</div>
-        <div class="fs-6">Raza: {{raza}}</div>
+        <div class="fs-6">Nombre: {{Name}}</div>
+        <div class="fs-6">Edad: {{Age}} años</div>
+        <div class="fs-6">Raza: {{Race}}</div>
+        <div class="fs-6">Genero: {{genero === generoEnum.Macho ? 'Macho' : 'Hembra'}}</div>
+        <div class="fs-6">Estado: {{Status === statusEnum.Adopted ? 'Adoptado' : 'No Adoptado'}}</div>
+        <div class="fs-6">Descripción: {{Description}}</div>
     </div>
 </div>
