@@ -1,9 +1,9 @@
 import { Person } from "./person";
 
 export interface Adopter extends Person {
-    Ocupation: string;
-    HouseType: HouseTypes;
-    MoneyIncome: number;
+    ocupation: string;
+    houseType: HouseTypes;
+    moneyIncome: number;
 }
 
 export enum HouseTypes {

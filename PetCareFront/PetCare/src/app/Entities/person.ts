@@ -1,12 +1,12 @@
 export interface Person {
-    Identification: number;
-    Name: string;
-    LastName: string;
-    Cellphone: string;
-    Address: string;
-    Email: string;
-    Password: string;
-    BornDate: Date;
+    identification: number;
+    name: string;
+    lastName: string;
+    cellphone: string;
+    address: string;
+    email: string;
+    password: string;
+    bornDate: Date;
     userType: UserType;
 }
 

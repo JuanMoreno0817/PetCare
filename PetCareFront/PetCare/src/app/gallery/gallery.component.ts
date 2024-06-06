@@ -27,9 +27,12 @@ export class GalleryComponent implements OnInit{
       if(dato){
         this.pets = dato ? [dato] : [];
         this.petNotFound = false;
+        //console.log(dato);
       }
-      else
+      else{
         this.petNotFound = true;
+        //console.log(dato);
+      }
     });
   }
 }

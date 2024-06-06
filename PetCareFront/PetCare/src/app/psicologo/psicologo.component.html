@@ -53,11 +53,6 @@
                     <div class="row justify-content-between gap-2">
                         <div class="col">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Id Cita</span>
-                                <input type="number" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Creacion</span>
                                 <input type="date" class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
@@ -66,18 +61,14 @@
                                 <span class="input-group-text" id="inputGroup-sizing-default">Psicólogo</span>
                                 <select class="form-select" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option *ngFor="let psicologo of pshicologists" [value]='psicologo.identification'>{{psicologo.name}}</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Adoptante</span>
                                 <select class="form-select" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option *ngFor="let adopter of adopters" [value]='adopter.identification'>{{adopter.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -114,18 +105,14 @@
                                 <span class="input-group-text" id="inputGroup-sizing-default">Psicólogo</span>
                                 <select class="form-select" aria-label="Default select example" disabled>
                                     <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option *ngFor="let psicologo of pshicologists" [value]='psicologo.identification'>{{psicologo.name}}</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Adoptante</span>
                                 <select class="form-select" aria-label="Default select example" disabled>
                                     <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option *ngFor="let adopter of adopters" [value]='adopter.identification'>{{adopter.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -163,18 +150,14 @@
                                 <span class="input-group-text" id="inputGroup-sizing-default">Psicólogo</span>
                                 <select class="form-select" aria-label="Default select example" disabled>
                                     <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option *ngFor="let psicologo of pshicologists" [value]='psicologo.identification'>{{psicologo.name}}</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Adoptante</span>
                                 <select class="form-select" aria-label="Default select example" disabled>
                                     <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option *ngFor="let adopter of adopters" [value]='adopter.identification'>{{adopter.name}}</option>
                                 </select>
                             </div>
                         </div>

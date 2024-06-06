@@ -1,9 +1,9 @@
 import { Vet } from './vet';
 
 export interface MedicalRecord {
-    IdMedicalRe: number | null;
-    CreateDate: Date | null;
-    UpdateDate: Date | null;
-    Description: string;
-    Vet: Vet | null; //FK
+    idMedicalRe: number | null;
+    createDate: Date | null;
+    updateDate: Date | null;
+    description: string;
+    vet: Vet | null; //FK
 }

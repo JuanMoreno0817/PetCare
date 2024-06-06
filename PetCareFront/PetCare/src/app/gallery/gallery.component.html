@@ -21,11 +21,7 @@
                         aria-describedby="inputGroup-sizing-sm">
                 </div>
             </div>
-            <div class="fs-5 my-2">Mascota
-                <div *ngIf="petNotFound" class="alert alert-danger" role="alert">
-                    La mascota no se encontró. Por favor, verifica el nombre e intenta nuevamente.
-                </div>
-            </div>
+            <div class="fs-5 my-2">Mascota</div>
             <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
@@ -101,15 +97,25 @@
         <div class="col-lg-10 col-md-9 col-sm-8 py-3" style="overflow-y: auto; max-height: 600px;">
             <div class="row justify-content-center fs-1 fw-bold mb-3">Mascotas</div>
             <div class="container d-flex">
-                <div class="row justify-content-center">
-                    <ng-container *ngIf="pets">
+                <ng-container *ngIf="pets">
+                    <div class="row justify-content-center">
                         <div class="col-auto my-2 text-center" *ngFor="let pet of pets">
                             <app-carta [img]="'../../assets/imagenGato.jpg'" [Name]="pet.name" [Age]="pet.age"
                                 [Race]="pet.race" [genero]="pet.genero" [Status]="pet.status"
                                 [Description]="pet.description">
                             </app-carta>
                         </div>
-                    </ng-container>
+                        <div class="col fs-5 my-2">
+                            <div *ngIf="petNotFound" class="alert alert-danger" role="alert">
+                                La mascota no se encontró. Por favor, verifica el nombre e intenta nuevamente.
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <div class="fs-5 my-2">
+                    <div *ngIf="!pets" class="alert alert-danger" role="alert">
+                        No hay mascotas disponibles.
+                    </div>
                 </div>
             </div>
         </div>

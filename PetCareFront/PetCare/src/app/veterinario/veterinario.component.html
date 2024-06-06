@@ -35,41 +35,13 @@
                     <h1 class="fs-3 text-center mb-3">Ver historiales</h1>
                     <div class="row mx-0 mb-3 w-100">
                         <div class="col w-100" style="max-height: 220px; overflow-y: auto;">
-                            <div
-                                class="d-flex justify-content-between bg-secondary text-white rounded p-2 my-1 shadow w-100">
-                                <div class="fs-6">Mascota</div>
-                                <div class="fs-6">IdHistorial</div>
-                                <div class="fs-6">Fecha Creacion</div>
-                                <a href="#" class="link link-info text-decoration-none">Ver</a>
-                            </div>
-                            <div
-                                class="d-flex justify-content-between bg-secondary text-white rounded p-2 my-1 shadow w-100">
-                                <div class="fs-6">Mascota</div>
-                                <div class="fs-6">IdHistorial</div>
-                                <div class="fs-6">Fecha Creacion</div>
-                                <a href="#" class="link link-info text-decoration-none">Ver</a>
-                            </div>
-                            <div
-                                class="d-flex justify-content-between bg-secondary text-white rounded p-2 my-1 shadow w-100">
-                                <div class="fs-6">Mascota</div>
-                                <div class="fs-6">IdHistorial</div>
-                                <div class="fs-6">Fecha Creacion</div>
-                                <a href="#" class="link link-info text-decoration-none">Ver</a>
-                            </div>
-                            <div
-                                class="d-flex justify-content-between bg-secondary text-white rounded p-2 my-1 shadow w-100">
-                                <div class="fs-6">Mascota</div>
-                                <div class="fs-6">IdHistorial</div>
-                                <div class="fs-6">Fecha Creacion</div>
-                                <a href="#" class="link link-info text-decoration-none">Ver</a>
-                            </div>
-                            <div
-                                class="d-flex justify-content-between bg-secondary text-white rounded p-2 my-1 shadow w-100">
-                                <div class="fs-6">Mascota</div>
-                                <div class="fs-6">IdHistorial</div>
-                                <div class="fs-6">Fecha Creacion</div>
-                                <a href="#" class="link link-info text-decoration-none">Ver</a>
-                            </div>
+                            <ng-container *ngIf="medicalRecords">
+                                <div class="d-flex justify-content-between bg-secondary text-white rounded p-2 my-1 shadow w-100" *ngFor="let medicalRecord of medicalRecords">
+                                    <div class="fs-6">{{medicalRecord.idMedicalRe}}</div>
+                                    <div class="fs-6">{{medicalRecord.createDate}}</div>
+                                    <a href="#" class="link link-info text-decoration-none">Ver</a>
+                                </div>
+                            </ng-container>
                         </div>
                     </div>
                 </form>
