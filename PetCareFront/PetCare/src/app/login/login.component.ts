@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         if (dataResponse.status == "ok") {
           localStorage.setItem("Token", dataResponse.response);
           this.router.navigate(['gallery']);
+          window.location.reload();
         } else {
           this.errorStatus = true;
           this.errorMsj = dataResponse.response;

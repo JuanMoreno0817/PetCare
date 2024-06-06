@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,6 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+
+  log: boolean = false;
+
+  ngOnInit(): void {
+    this.checkLocalStorage();
+  }
+
+  checkLocalStorage() {
+    if (localStorage.getItem('Token')) {
+      this.log = true;
+    }
+    else
+      this.log = false;
+  }
+
+  logOut(){
+    localStorage.clear();
+    window.location.href = window.location.origin;
+  }
 
 }
