@@ -10,6 +10,7 @@ import { PagenfComponent } from './pagenf/pagenf.component';
 import { AdoptanteComponent } from './adoptante/adoptante.component';
 import { FormvoluntComponent } from './formvolunt/formvolunt.component';
 import { FormadoptComponent } from './formadopt/formadopt.component';
+import { PetdetailsComponent } from './petdetails/petdetails.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'gallery',
     component: GalleryComponent
+  },
+  {
+    path: 'petdetail',
+    component: PetdetailsComponent
   },
   {
     path: 'login',

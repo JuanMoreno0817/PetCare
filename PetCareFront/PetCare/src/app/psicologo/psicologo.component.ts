@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PsicologoService } from './psicologo.services';
+import { Appointment } from '../Entities/appointment';
 
 @Component({
   selector: 'app-psicologo',
   templateUrl: './psicologo.component.html',
   styleUrls: ['./psicologo.component.css']
 })
-export class PsicologoComponent {
+export class PsicologoComponent implements OnInit{
+
+  appointments: Appointment[] = [];
+  constructor(private PsicologoServices: PsicologoService){}
+  
+  ngOnInit(): void {
+    this.PsicologoServices.getAllAppointments().subscribe(datos => {
+      this.appointments = datos;
+    });
+  }
 
   show: boolean = false;
   crud: number = 1;

@@ -1,0 +1,22 @@
+.bg-rose{
+    background-color: #fadacb;
+}
+
+.btn-green{
+    background-color: #b4d36d;
+}
+
+.btn-green:hover{
+    background-color: #C9EB79;
+}
+
+.btn-outline-blue{
+    background-color: transparent;
+    border: #5c74ff 1px solid;
+    color: #2747ff;
+}
+
+.btn-outline-blue:hover{
+    background-color: #5c74ff;
+    color: white;
+}

@@ -20,7 +20,8 @@ import { FormadoptComponent } from './formadopt/formadopt.component';
 import { FormvoluntComponent } from './formvolunt/formvolunt.component';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LogoutComponent } from './logout/logout.component'
+import { LogoutComponent } from './logout/logout.component';
+import { PetdetailsComponent } from './petdetails/petdetails.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { LogoutComponent } from './logout/logout.component'
     AdoptanteComponent,
     FormadoptComponent,
     FormvoluntComponent,
-    LogoutComponent
+    LogoutComponent,
+    PetdetailsComponent
   ],
   imports: [
     BrowserModule,
