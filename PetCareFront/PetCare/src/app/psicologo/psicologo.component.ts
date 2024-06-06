@@ -15,6 +15,7 @@ export class PsicologoComponent implements OnInit{
   ngOnInit(): void {
     this.PsicologoServices.getAllAppointments().subscribe(datos => {
       this.appointments = datos;
+      //console.log(this.appointments);
     });
   }
 
