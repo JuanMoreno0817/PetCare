@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GalleryService } from '../gallery/gallery.service';
 import { Pet } from '../Entities/pet';
+import { Adopter } from '../Entities/adopter';
+import { jwtDecode } from 'jwt-decode';
+import { PetdetailsService } from './petdetails.service';
+import { AdoptionForm } from '../Entities/adoption-form';
 
 @Component({
   selector: 'app-petdetails',
@@ -11,12 +15,45 @@ import { Pet } from '../Entities/pet';
 export class PetdetailsComponent implements OnInit{
 
   pet: Pet | null = null;
-  constructor(private galleryServices: GalleryService, private activatedRoute: ActivatedRoute){}
+  adopter: Adopter | null = null;
+  adoptionForm?: AdoptionForm;
+  postSuccess: boolean = false;
+  constructor(private galleryServices: GalleryService, private activatedRoute: ActivatedRoute, private petDetailService:PetdetailsService){}
 
   getPetByName(name: string){
     this.galleryServices.getPetByName(name).subscribe(mascota =>{
       this.pet = mascota;
     });
+  }
+
+  getUserFromToken(token: string): any {
+    const decodedToken = jwtDecode(token);
+    return decodedToken;
+  }
+
+  adoptedPet() {
+    const token = localStorage.getItem('Token');
+    if (token !== null) {
+      const claims = this.getUserFromToken(token);
+      const email = claims['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'];
+
+      this.petDetailService.getAdopterByEmail(email).subscribe(dato => {
+        this.adopter = dato;
+
+        if (this.pet && this.adopter) {
+          this.adoptionForm = {
+            adopter: this.adopter,
+            pet: this.pet
+          };
+          
+          this.petDetailService.createAdoptionForm(this.adoptionForm).subscribe({
+            next: datos => {
+              this.postSuccess = datos === null ? false : true;
+            }
+          });
+        }
+      });
+    }
   }
   
   ngOnInit(): void {

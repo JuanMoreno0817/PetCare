@@ -2,6 +2,9 @@
     <div class="row">
         <div class="col"><a class="btn btn-outline-blue ms-3" href="/gallery">Volver</a></div>
     </div>
+    <div *ngIf="postSuccess" class="alert alert-danger" role="alert">
+        Algo malo ocurrio.
+    </div>
     <div class="row justify-content-center m-0">
         <div class="col-lg-5 col-md-8 col-sm-10">
             <div class="text-center bg-rose px-0 rounded shadow-lg border">
@@ -16,7 +19,9 @@
                     <div class="">GENERO: {{pet?.genero === 1 ? 'Macho' : 'Hembra' }}</div>
                     <div class="">ESTADO: {{pet?.status === 1 ? 'Adoptado' : 'No Adoptado'}}</div>
                 </div>
-                <div class="d-flex p-3 justify-content-end"><a class="btn btn-green">Adoptar</a></div>
+                <div class="d-flex p-3 justify-content-end">
+                    <button type="button" class="btn btn-outline-dark" (click)="adoptedPet()" >Adoptar</button>
+                </div>
             </div>
         </div>
     </div>

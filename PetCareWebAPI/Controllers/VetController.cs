@@ -42,7 +42,7 @@ namespace PetCareWebAPI.Controllers
 
         [Authorize(Policy = "Admin")]
         [HttpPost, ActionName("Create")]
-        [Route("Create")]
+        [Route("CreateVet")]
         public async Task<ActionResult<Vet>> CreateVet(Vet vet)
         {
             try
@@ -65,7 +65,7 @@ namespace PetCareWebAPI.Controllers
 
         [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
-        [Route("Edit/{id}")]
+        [Route("EditVet/{id}")]
         public async Task<IActionResult> EditVet(int id, Vet vet)
         {
             try
@@ -90,7 +90,7 @@ namespace PetCareWebAPI.Controllers
 
         [Authorize(Policy = "Admin")]
         [HttpDelete, ActionName("Delete")]
-        [Route("Delete/{id}")]
+        [Route("DeleteVet/{id}")]
         public async Task<IActionResult> DeleteVet(int id)
         {
             var vet = await _context.Vets.FirstOrDefaultAsync(v => v.Identification == id);

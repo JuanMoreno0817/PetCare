@@ -26,20 +26,20 @@ namespace PetCareWebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ResponseLogin>> Login(LogInDTO person) 
+        public async Task<ActionResult<ResponseLogin>> Login(LogInDTO person)
         {
             ResponseLogin responseLogin = new ResponseLogin();
             var persona = await _services.GetPerson(person);
 
             if (persona == null)
             {
-                responseLogin.response = "Invalid credentials"; 
+                responseLogin.response = "Invalid credentials";
                 responseLogin.status = "Error";
                 return BadRequest(responseLogin);
             }
 
             responseLogin.response = GenerateToken(persona);
-            if(responseLogin.response != null)
+            if (responseLogin.response != null)
                 responseLogin.status = "ok";
             else
                 return BadRequest();
@@ -47,7 +47,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(responseLogin);
         }
 
-        private string GenerateToken(Person person) 
+        private string GenerateToken(Person person)
         {
             var claims = new[]
             {

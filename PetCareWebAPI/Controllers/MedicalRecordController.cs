@@ -30,7 +30,7 @@ namespace PetCareWebAPI.Controllers
 
         [HttpGet, ActionName("Get")]
         [Route("GetMedicalRecord/{id}")]
-        public async Task<ActionResult<MedicalRecord>> GetMedicalRecordByIdentification(int id)
+        public async Task<ActionResult<MedicalRecord>> GetMedicalRecordByIdentification(Guid id)
         {
             var medicalRecord = await _context.MedicalRecords.FirstOrDefaultAsync(a => a.IdMedicalRe == id);
 
@@ -41,12 +41,15 @@ namespace PetCareWebAPI.Controllers
 
         [Authorize(Policy = "Admin")]
         [HttpPost, ActionName("Create")]
-        [Route("Create")]
+        [Route("CreateMedicalRecord")]
         public async Task<ActionResult<MedicalRecord>> CreateMedicalRecord(MedicalRecord medicalRecord)
         {
             try
             {
                 medicalRecord.CreateDate = DateTime.Now;
+                medicalRecord.IdMedicalRe = Guid.NewGuid();
+                _context.Entry(medicalRecord.Vet).State = EntityState.Unchanged;
+
                 _context.MedicalRecords.Add(medicalRecord);
                 await _context.SaveChangesAsync();
             }
@@ -65,8 +68,8 @@ namespace PetCareWebAPI.Controllers
 
         [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
-        [Route("Edit/{id}")]
-        public async Task<IActionResult> EditMedicalRecord(int id, MedicalRecord medicalRecord)
+        [Route("EditMedicalRecord/{id}")]
+        public async Task<IActionResult> EditMedicalRecord(Guid id, MedicalRecord medicalRecord)
         {
             try
             {
@@ -90,8 +93,8 @@ namespace PetCareWebAPI.Controllers
 
         [Authorize(Policy = "Admin")]
         [HttpDelete, ActionName("Delete")]
-        [Route("Delete/{id}")]
-        public async Task<IActionResult> DeleteMedicalRecord(int id)
+        [Route("DeleteMedicalRecord/{id}")]
+        public async Task<IActionResult> DeleteMedicalRecord(Guid id)
         {
             var medicalRecord = await _context.MedicalRecords.FirstOrDefaultAsync(a => a.IdMedicalRe == id);
 

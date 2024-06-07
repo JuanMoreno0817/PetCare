@@ -31,7 +31,7 @@ namespace PetCareWebAPI.Controllers
 
         [HttpGet, ActionName("Get")]
         [Route("GetAppointment/{id}")]
-        public async Task<ActionResult<Appointment>> GetAppointmentByIdentification(int id)
+        public async Task<ActionResult<Appointment>> GetAppointmentByIdentification(Guid id)
         {
             var appointment = await _context.Appointments.FirstOrDefaultAsync(a => a.IDAppointment == id);
 
@@ -41,11 +41,15 @@ namespace PetCareWebAPI.Controllers
         }
 
         [HttpPost, ActionName("Create")]
-        [Route("Create")]
+        [Route("CreateAppointment")]
         public async Task<ActionResult<Appointment>> CreateAppointment(Appointment appointment)
         {
             try
             {
+                appointment.IDAppointment = new Guid();
+                _context.Entry(appointment.Adopter).State = EntityState.Unchanged;
+                _context.Entry(appointment.Psichologist).State = EntityState.Unchanged;
+
                 _context.Appointments.Add(appointment);
                 await _context.SaveChangesAsync();
             }
@@ -63,8 +67,8 @@ namespace PetCareWebAPI.Controllers
         }
 
         [HttpPut, ActionName("Edit")]
-        [Route("Edit/{id}")]
-        public async Task<IActionResult> EditAppointment(int id, Appointment appointment)
+        [Route("EditAppointment/{id}")]
+        public async Task<IActionResult> EditAppointment(Guid id, Appointment appointment)
         {
             try
             {
@@ -87,8 +91,8 @@ namespace PetCareWebAPI.Controllers
         }
 
         [HttpDelete, ActionName("Delete")]
-        [Route("Delete/{id}")]
-        public async Task<IActionResult> DeleteAppointment(int id)
+        [Route("DeleteAppointment/{id}")]
+        public async Task<IActionResult> DeleteAppointment(Guid id)
         {
             var appointment = await _context.Appointments.FirstOrDefaultAsync(a => a.IDAppointment == id);
 

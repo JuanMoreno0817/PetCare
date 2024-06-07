@@ -24,12 +24,10 @@ namespace PetCareWebAPI.DAL.Entities
         public string Race { get; set; }
 
         [Display(Name = "Peso")]
-        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public double Weight { get; set; }
 
         [Display(Name = "Altura")]
-        [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public double Height { get; set; }
         public string Description { get; set; }

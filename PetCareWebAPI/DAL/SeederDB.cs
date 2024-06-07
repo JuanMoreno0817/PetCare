@@ -45,8 +45,7 @@ namespace PetCareWebAPI.DAL
                     Weight = 20,
                     Status = 0,
                     genero = 0,
-                    Tipo = (Pet.Types)1,
-                    IdMedicalRecord = 3
+                    Tipo = (Pet.Types)1
                 });
 
                 _context.Pets.Add(new Pet
@@ -88,8 +87,7 @@ namespace PetCareWebAPI.DAL
                     Weight = 25,
                     Status = 0,
                     genero = (Pet.Genero)1,
-                    Tipo = (Pet.Types)1,
-                    IdMedicalRecord = 1
+                    Tipo = (Pet.Types)1
                 });
 
                 _context.Pets.Add(new Pet
@@ -174,8 +172,7 @@ namespace PetCareWebAPI.DAL
                     Weight = 5,
                     Status = 0,
                     genero = (Pet.Genero)1,
-                    Tipo = 0,
-                    IdMedicalRecord = 2
+                    Tipo = 0
                 });
 
                 await _context.SaveChangesAsync();
@@ -383,13 +380,15 @@ namespace PetCareWebAPI.DAL
                 var vet = _context.Vets.FirstOrDefault(v => v.Identification == 34145);
                 _context.MedicalRecords.Add(new MedicalRecord
                 {
+                    IdMedicalRe = new Guid(),
                     CreateDate = DateTime.Now,
                     Description = "Revisión inicial, se encuentra en óptimas condiciones, se le aplicaron las 2 primeras vacunas y se desparasito",
-                    Vet = vet
+                    Vet = vet,
                 });
 
                 _context.MedicalRecords.Add(new MedicalRecord
                 {
+                    IdMedicalRe = new Guid(),
                     CreateDate = DateTime.Now,
                     Description = "Revisión inicial, se encuentra en óptimas condiciones y se desparasito",
                     Vet = vet
@@ -397,6 +396,7 @@ namespace PetCareWebAPI.DAL
 
                 _context.MedicalRecords.Add(new MedicalRecord
                 {
+                    IdMedicalRe = new Guid(),
                     CreateDate = DateTime.Now,
                     Description = "Revisión inicial, se encuentra deshidratado, se desparasito y en 5 horas se le aplicara suero.",
                     Vet = vet
@@ -416,6 +416,7 @@ namespace PetCareWebAPI.DAL
 
                 _context.AdoptionForms.Add(new AdoptionForm
                 {
+                    IdForm = new Guid(),
                     CreateDate = DateTime.Now,
                     Adopter = adopter1,
                     Pet = pet1
@@ -423,6 +424,7 @@ namespace PetCareWebAPI.DAL
 
                 _context.AdoptionForms.Add(new AdoptionForm
                 {
+                    IdForm = new Guid(),
                     CreateDate = DateTime.Now,
                     Adopter = adopter2,
                     Pet = pet10
@@ -430,6 +432,7 @@ namespace PetCareWebAPI.DAL
 
                 _context.AdoptionForms.Add(new AdoptionForm
                 {
+                    IdForm = new Guid(),
                     CreateDate = DateTime.Now,
                     Adopter = adopter3,
                     Pet = pet4
@@ -445,7 +448,8 @@ namespace PetCareWebAPI.DAL
             {
                 var psichologist = _context.Psichologists.FirstOrDefault(p => p.Identification == 76321);
                 _context.Appointments.Add(new Appointment 
-                { 
+                {
+                    IDAppointment = new Guid(),
                     Adopter = adopter1,
                     Psichologist = psichologist,
                     AppointmentDate = new DateTime(2024, 05, 25, 14, 30,0)
@@ -453,6 +457,7 @@ namespace PetCareWebAPI.DAL
 
                 _context.Appointments.Add(new Appointment
                 {
+                    IDAppointment = new Guid(),
                     Adopter = adopter2,
                     Psichologist = psichologist,
                     AppointmentDate = new DateTime(2024, 05, 26, 14, 30, 0)
@@ -460,6 +465,7 @@ namespace PetCareWebAPI.DAL
 
                 _context.Appointments.Add(new Appointment
                 {
+                    IDAppointment = new Guid(),
                     Adopter = adopter3,
                     Psichologist = psichologist,
                     AppointmentDate = new DateTime(2024, 05, 27, 14, 30, 0)

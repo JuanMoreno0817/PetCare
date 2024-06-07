@@ -24,27 +24,20 @@ namespace PetCareWebAPI.Migrations
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.AdoptionForm", b =>
                 {
-                    b.Property<int>("IdForm")
+                    b.Property<Guid>("IdForm")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdForm"));
-
-                    b.Property<int?>("AdopterIdentification")
+                    b.Property<int>("AdopterIdentification")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PetIdPet")
+                    b.Property<int>("PetIdPet")
                         .HasColumnType("int");
 
-                    b.HasKey("IdForm");
-
                     b.HasIndex("AdopterIdentification");
-
-                    b.HasIndex("IdForm")
-                        .IsUnique();
 
                     b.HasIndex("PetIdPet");
 
@@ -53,27 +46,20 @@ namespace PetCareWebAPI.Migrations
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.Appointment", b =>
                 {
-                    b.Property<int>("IDAppointment")
+                    b.Property<Guid>("IDAppointment")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IDAppointment"));
-
-                    b.Property<int?>("AdopterIdentification")
+                    b.Property<int>("AdopterIdentification")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PsichologistIdentification")
+                    b.Property<int>("PsichologistIdentification")
                         .HasColumnType("int");
 
-                    b.HasKey("IDAppointment");
-
                     b.HasIndex("AdopterIdentification");
-
-                    b.HasIndex("IDAppointment")
-                        .IsUnique();
 
                     b.HasIndex("PsichologistIdentification");
 
@@ -82,11 +68,9 @@ namespace PetCareWebAPI.Migrations
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.MedicalRecord", b =>
                 {
-                    b.Property<int>("IdMedicalRe")
+                    b.Property<Guid>("IdMedicalRe")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMedicalRe"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -97,13 +81,8 @@ namespace PetCareWebAPI.Migrations
                     b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("VetIdentification")
+                    b.Property<int>("VetIdentification")
                         .HasColumnType("int");
-
-                    b.HasKey("IdMedicalRe");
-
-                    b.HasIndex("IdMedicalRe")
-                        .IsUnique();
 
                     b.HasIndex("VetIdentification");
 
@@ -173,7 +152,6 @@ namespace PetCareWebAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Height")
-                        .HasMaxLength(20)
                         .HasColumnType("float");
 
                     b.Property<int?>("IdMedicalRecord")
@@ -194,16 +172,12 @@ namespace PetCareWebAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<double>("Weight")
-                        .HasMaxLength(20)
                         .HasColumnType("float");
 
                     b.Property<int>("genero")
                         .HasColumnType("int");
 
                     b.HasKey("IdPet");
-
-                    b.HasIndex("IdPet")
-                        .IsUnique();
 
                     b.ToTable("Pets");
                 });

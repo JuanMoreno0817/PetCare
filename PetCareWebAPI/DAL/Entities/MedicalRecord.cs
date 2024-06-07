@@ -5,7 +5,7 @@ namespace PetCareWebAPI.DAL.Entities
     public class MedicalRecord
     {
         [Key]
-        public int IdMedicalRe { get; set; }
+        public Guid IdMedicalRe { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public string Description { get; set; }

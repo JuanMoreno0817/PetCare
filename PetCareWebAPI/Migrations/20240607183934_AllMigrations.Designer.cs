@@ -12,8 +12,8 @@ using PetCareWebAPI.DAL;
 namespace PetCareWebAPI.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240523203544_AddUserType")]
-    partial class AddUserType
+    [Migration("20240607183934_AllMigrations")]
+    partial class AllMigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,9 @@ namespace PetCareWebAPI.Migrations
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.AdoptionForm", b =>
                 {
-                    b.Property<int>("IdForm")
+                    b.Property<Guid>("IdForm")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdForm"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("AdopterIdentification")
                         .HasColumnType("int");
@@ -46,9 +44,6 @@ namespace PetCareWebAPI.Migrations
 
                     b.HasIndex("AdopterIdentification");
 
-                    b.HasIndex("IdForm")
-                        .IsUnique();
-
                     b.HasIndex("PetIdPet");
 
                     b.ToTable("AdoptionForms");
@@ -56,11 +51,9 @@ namespace PetCareWebAPI.Migrations
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.Appointment", b =>
                 {
-                    b.Property<int>("IDAppointment")
+                    b.Property<Guid>("IDAppointment")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IDAppointment"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("AdopterIdentification")
                         .HasColumnType("int");
@@ -75,9 +68,6 @@ namespace PetCareWebAPI.Migrations
 
                     b.HasIndex("AdopterIdentification");
 
-                    b.HasIndex("IDAppointment")
-                        .IsUnique();
-
                     b.HasIndex("PsichologistIdentification");
 
                     b.ToTable("Appointments");
@@ -85,11 +75,9 @@ namespace PetCareWebAPI.Migrations
 
             modelBuilder.Entity("PetCareWebAPI.DAL.Entities.MedicalRecord", b =>
                 {
-                    b.Property<int>("IdMedicalRe")
+                    b.Property<Guid>("IdMedicalRe")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdMedicalRe"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -104,9 +92,6 @@ namespace PetCareWebAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("IdMedicalRe");
-
-                    b.HasIndex("IdMedicalRe")
-                        .IsUnique();
 
                     b.HasIndex("VetIdentification");
 
@@ -176,7 +161,6 @@ namespace PetCareWebAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Height")
-                        .HasMaxLength(20)
                         .HasColumnType("float");
 
                     b.Property<int?>("IdMedicalRecord")
@@ -197,16 +181,12 @@ namespace PetCareWebAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<double>("Weight")
-                        .HasMaxLength(20)
                         .HasColumnType("float");
 
                     b.Property<int>("genero")
                         .HasColumnType("int");
 
                     b.HasKey("IdPet");
-
-                    b.HasIndex("IdPet")
-                        .IsUnique();
 
                     b.ToTable("Pets");
                 });

@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using PetCareWebAPI.DAL;
 using PetCareWebAPI.DAL.Entities;
+using PetCareWebAPI.Response;
 
 namespace PetCareWebAPI.Controllers
 {
@@ -30,7 +32,7 @@ namespace PetCareWebAPI.Controllers
 
         [HttpGet, ActionName("Get")]
         [Route("GetAdoptionForm/{id}")]
-        public async Task<ActionResult<AdoptionForm>> GetAdoptionFormByIdentification(int id)
+        public async Task<ActionResult<AdoptionForm>> GetAdoptionFormByIdentification(Guid id)
         {
             var adoptionForms = await _context.AdoptionForms.FirstOrDefaultAsync(a => a.IdForm == id);
 
@@ -39,20 +41,28 @@ namespace PetCareWebAPI.Controllers
             return adoptionForms;
         }
 
-        [HttpPost, ActionName("Create")]
-        [Route("Create")]
-        public async Task<ActionResult<AdoptionForm>> CreateAdoptionForm(AdoptionForm adoptionForm)
+        [HttpPost]
+        [Route("CreateAdoptionForm")]
+        public async Task<ActionResult<AdoptionForm>> CreateAdoptionForm([FromBody] AdoptionForm adoptionForm)
         {
             try
             {
                 adoptionForm.CreateDate = DateTime.Now;
+                adoptionForm.IdForm = Guid.NewGuid();
+
+                _context.Entry(adoptionForm.Adopter).State = EntityState.Unchanged;
+                _context.Entry(adoptionForm.Pet).State = EntityState.Unchanged;
+
                 _context.AdoptionForms.Add(adoptionForm);
+                Console.WriteLine("Objeto a guardar: ",adoptionForm.ToString());
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)
             {
-                if (ex.InnerException.Message.Contains("duplicate"))
-                    return Conflict(String.Format("{0} ya existe", adoptionForm.IdForm));
+                if (ex.InnerException is SqlException sqlEx && (sqlEx.Number == 2601 || sqlEx.Number == 2627))
+                    return Conflict("Ya existe un formulario de adopción con este identificador único.");
+                else
+                    return Conflict(ex.Message);
             }
             catch (Exception ex)
             {
@@ -63,8 +73,8 @@ namespace PetCareWebAPI.Controllers
         }
 
         [HttpPut, ActionName("Edit")]
-        [Route("Edit/{id}")]
-        public async Task<IActionResult> EditAdoptionForm(int id, AdoptionForm adoptionForm)
+        [Route("EditAdoptionForm/{id}")]
+        public async Task<IActionResult> EditAdoptionForm(Guid id, AdoptionForm adoptionForm)
         {
             try
             {
@@ -87,8 +97,8 @@ namespace PetCareWebAPI.Controllers
         }
 
         [HttpDelete, ActionName("Delete")]
-        [Route("Delete/{id}")]
-        public async Task<IActionResult> DeleteAdoptionForm(int id)
+        [Route("DeleteAdoptionForm/{id}")]
+        public async Task<IActionResult> DeleteAdoptionForm(Guid id)
         {
             var adoptionForm = await _context.AdoptionForms.FirstOrDefaultAsync(a => a.IdForm == id);
 

@@ -30,11 +30,6 @@ namespace PetCareWebAPI.DAL
 
             modelBuilder.Entity<Vet>().HasIndex(v => v.Identification).IsUnique();
             modelBuilder.Entity<Vet>().ToTable("Vet");
-
-            modelBuilder.Entity<Appointment>().HasIndex(a => a.IDAppointment).IsUnique();
-            modelBuilder.Entity<MedicalRecord>().HasIndex(m => m.IdMedicalRe).IsUnique();
-            modelBuilder.Entity<AdoptionForm>().HasIndex(f => f.IdForm).IsUnique();
-            modelBuilder.Entity<Pet>().HasIndex(p => p.IdPet).IsUnique();
         }
     }
 }

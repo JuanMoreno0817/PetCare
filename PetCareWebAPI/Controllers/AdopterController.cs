@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PetCareWebAPI.DAL;
 using PetCareWebAPI.DAL.Entities;
+using PetCareWebAPI.DTOs;
 
 namespace PetCareWebAPI.Controllers
 {
@@ -40,8 +41,19 @@ namespace PetCareWebAPI.Controllers
             return adopter;
         }
 
+        [HttpGet, ActionName("Post")]
+        [Route("GetAdopterByEmail/{email}")]
+        public async Task<ActionResult<Adopter>> GetAdopterByEmail(string email)
+        {
+            var adopter = await _context.Adopters.FirstOrDefaultAsync(a => a.Email == email);
+
+            if (adopter == null) return null;
+
+            return adopter;
+        }
+
         [HttpPost, ActionName("Create")]
-        [Route("Create")]
+        [Route("CreateAdopter")]
         public async Task<ActionResult<Adopter>> CreateAdopter(Adopter adopter)
         {
             try
@@ -63,7 +75,7 @@ namespace PetCareWebAPI.Controllers
         }
 
         [HttpPut, ActionName("Edit")]
-        [Route("Edit/{id}")]
+        [Route("EditAdopter/{id}")]
         public async Task<IActionResult> EditAdopter(int id, Adopter adopter)
         {
             try
@@ -88,7 +100,7 @@ namespace PetCareWebAPI.Controllers
 
         [Authorize(Policy = "Admin")]
         [HttpDelete, ActionName("Delete")]
-        [Route("Delete/{id}")]
+        [Route("DeleteAdopter/{id}")]
         public async Task<IActionResult> DeleteAdopter(int id)
         {
             var adopter = await _context.Adopters.FirstOrDefaultAsync(a => a.Identification == id);
