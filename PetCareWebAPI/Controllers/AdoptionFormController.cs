@@ -54,7 +54,6 @@ namespace PetCareWebAPI.Controllers
                 _context.Entry(adoptionForm.Pet).State = EntityState.Unchanged;
 
                 _context.AdoptionForms.Add(adoptionForm);
-                Console.WriteLine("Objeto a guardar: ",adoptionForm.ToString());
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException ex)

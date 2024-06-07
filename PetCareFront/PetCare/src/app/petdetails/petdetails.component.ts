@@ -6,6 +6,7 @@ import { Adopter } from '../Entities/adopter';
 import { jwtDecode } from 'jwt-decode';
 import { PetdetailsService } from './petdetails.service';
 import { AdoptionForm } from '../Entities/adoption-form';
+import { AlertasService } from '../alertas/alertas.service';
 
 @Component({
   selector: 'app-petdetails',
@@ -18,7 +19,10 @@ export class PetdetailsComponent implements OnInit{
   adopter: Adopter | null = null;
   adoptionForm?: AdoptionForm;
   postSuccess: boolean = false;
-  constructor(private galleryServices: GalleryService, private activatedRoute: ActivatedRoute, private petDetailService:PetdetailsService){}
+  constructor(private galleryServices: GalleryService, 
+              private activatedRoute: ActivatedRoute, 
+              private petDetailService:PetdetailsService,
+              private alerta: AlertasService){}
 
   getPetByName(name: string){
     this.galleryServices.getPetByName(name).subscribe(mascota =>{
@@ -48,7 +52,12 @@ export class PetdetailsComponent implements OnInit{
           
           this.petDetailService.createAdoptionForm(this.adoptionForm).subscribe({
             next: datos => {
-              this.postSuccess = datos === null ? false : true;
+              this.postSuccess = datos !== null ? false : true;
+              if(this.postSuccess === false)
+                this.alerta.showSuccess('Solicitud Éxitosa! \n' + datos.idForm,'Hecho');
+            },
+            error: error => {
+              this.alerta.showError(error, 'Error');
             }
           });
         }
