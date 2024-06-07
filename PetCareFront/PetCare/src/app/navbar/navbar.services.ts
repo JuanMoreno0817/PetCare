@@ -7,7 +7,7 @@ import { Vet } from '../Entities/vet';
 @Injectable({
   providedIn: 'root'
 })
-export class VeterinarioService {
+export class NavbarService {
 
   constructor(private httpClient: HttpClient) { }
 

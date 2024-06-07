@@ -14,10 +14,14 @@ export class PsicologoComponent implements OnInit{
 
   appointments: Appointment[] = [];
   pshicologists: Pshicologist[] = [];
+  pshicologist: any = {};
   adopters: Adopter[] = [];
   constructor(private PsicologoServices: PsicologoService){}
   
   ngOnInit(): void {
+    this.PsicologoServices.getInfo().subscribe(datos =>{
+      this.pshicologist = datos;
+    });
     this.PsicologoServices.getAllAppointments().subscribe(datos => {
       this.appointments = datos;
       //console.log(this.appointments);
@@ -34,6 +38,12 @@ export class PsicologoComponent implements OnInit{
 
   show: boolean = true;
   crud: number = 1;
+
+  formatDateString(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    return date.toLocaleDateString('es-ES', options);
+  }
 
   mostrarCitas(){
     this.show = false;

@@ -13,21 +13,28 @@ export class PsicologoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllAppointments():Observable<Appointment[]>{
+  getAllAppointments(): Observable<Appointment[]> {
     const token = localStorage.getItem('Token'); // Obtén el token del localStorage
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.httpClient.get<Appointment[]>("https://localhost:7056/api/Appointment/GetAppointments", {headers});
+    return this.httpClient.get<Appointment[]>("https://localhost:7056/api/Appointment/GetAppointments", { headers });
   }
 
-  getAllPsichologists():Observable<Pshicologist[]>{
+  getAllPsichologists(): Observable<Pshicologist[]> {
     const token = localStorage.getItem('Token'); // Obtén el token del localStorage
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.httpClient.get<Pshicologist[]>("https://localhost:7056/api/Psichologist/GetPsichologists", {headers});
+    return this.httpClient.get<Pshicologist[]>("https://localhost:7056/api/Psichologist/GetPsichologists", { headers });
   }
-  
-  getAllAdopters():Observable<Adopter[]>{
+
+  getAllAdopters(): Observable<Adopter[]> {
     const token = localStorage.getItem('Token'); // Obtén el token del localStorage
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.httpClient.get<Adopter[]>("https://localhost:7056/api/Adopter/GetAdopters", {headers});
+    return this.httpClient.get<Adopter[]>("https://localhost:7056/api/Adopter/GetAdopters", { headers });
+  }
+
+  getInfo(): Observable<Pshicologist> {
+    const token = localStorage.getItem('Token'); // Obtén el token del localStorage
+    const idUser = localStorage.getItem('idUser');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.httpClient.get<Pshicologist>(`https://localhost:7056/api/Psichologist/GetPsichologist/${idUser}`, { headers });
   }
 }

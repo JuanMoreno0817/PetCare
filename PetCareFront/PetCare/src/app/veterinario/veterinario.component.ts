@@ -10,17 +10,27 @@ import { VeterinarioService } from './veterinario.services';
 export class VeterinarioComponent implements OnInit{
 
   medicalRecords: MedicalRecord[] = [];
+  vet: any = {} ;
   show: string = "1";
   crud: number = 1;
   constructor(private VeterinarioServices: VeterinarioService){}
 
   ngOnInit(): void {
+    this.VeterinarioServices.getInfo().subscribe(datos =>{
+      console.log(datos);
+      this.vet = datos;
+    });
     this.VeterinarioServices.getAllMedicalRecords().subscribe(datos => {
       this.medicalRecords = datos;
-      //console.log(this.appointments);
+      console.log(this.medicalRecords);
     });
   }
 
+  formatDateString(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    return date.toLocaleDateString('es-ES', options);
+  }
 
   mostrarDatos(){
     this.show = "1";

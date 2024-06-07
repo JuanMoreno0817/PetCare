@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AdoptanteService } from './adoptante.services';
-import { Adopter } from '../Entities/adopter';
 
 @Component({
   selector: 'app-adoptante',

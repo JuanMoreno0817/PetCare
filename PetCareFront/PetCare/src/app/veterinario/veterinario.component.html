@@ -212,48 +212,65 @@
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" [value]="vet.name" id="name" disabled>
                         </div>
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Apellido</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" [value]="vet.lastname" id="lastname" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
-                        <div class="input-group my-2">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Correo</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
-                        </div>
-                    </div>
                     <div class="col">
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Telefono</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" [value]="vet.cellphone" disabled>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group my-2">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Correo</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" [value]="vet.email" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="input-group my-2">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Tarjeta</span>
+                            <span class="input-group-text" id="inputGroup-sizing-default">Especializacion</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" [value]="vet.specialization" name="ocupation" disabled>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Experiencia</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" [value]="vet.ageExperiencie" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group my-2">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Nacimiento</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" [value]="formatDateString(vet.borndate)" disabled>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group my-2">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Tipo de usuario</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" [value]="vet.userType === 1? 'Usuario': 'Administrador'" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-warning mx-2 my-2">Editar datos</button>
                     <button type="button" class="btn btn-warning my-2">Actualizar datos</button>
                 </div>
                 <h1 class="fs-4 my-3 text-center">Cambiar contraseña</h1>
