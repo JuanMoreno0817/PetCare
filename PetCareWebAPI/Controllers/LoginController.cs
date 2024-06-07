@@ -40,8 +40,10 @@ namespace PetCareWebAPI.Controllers
 
             responseLogin.response = GenerateToken(persona);
             if(responseLogin.response != null)
+            {
                 responseLogin.status = "ok";
-            
+                responseLogin.idUser = persona.Identification.ToString();
+            }
             else
                 return Ok();
 
