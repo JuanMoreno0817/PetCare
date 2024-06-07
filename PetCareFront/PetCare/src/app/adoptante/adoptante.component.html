@@ -181,48 +181,65 @@
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" [value]="adoptante.name" id="name" disabled>
                         </div>
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Apellido</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" [value]="adoptante.lastname" id="lastname" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
-                        <div class="input-group my-2">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Correo</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
-                        </div>
-                    </div>
                     <div class="col">
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Telefono</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" [value]="adoptante.cellphone" disabled>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group my-2">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Correo</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" [value]="adoptante.email" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="input-group my-2">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Tarjeta</span>
+                            <span class="input-group-text" id="inputGroup-sizing-default">Ocupación</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" [value]="adoptante.ocupation" name="ocupation" disabled>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-group my-2">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Experiencia</span>
+                            <span class="input-group-text" id="inputGroup-sizing-default">Hogar</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                                aria-describedby="inputGroup-sizing-default" [value]="adoptante.houseType" id="house" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group my-2">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Fecha de nacimiento</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" [value]="formatDateString(adoptante.borndate)" disabled>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group my-2">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Tipo de usuario</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" [value]="adoptante.userType === 1? 'Usuario': 'Administrador'" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-warning mx-2 my-2">Editar datos</button>
                     <button type="button" class="btn btn-warning my-2">Actualizar datos</button>
                 </div>
                 <h1 class="fs-4 my-3 text-center">Cambiar contraseña</h1>

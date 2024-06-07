@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         let dataResponse: ResponseLogin = data;
         if (dataResponse.status == "ok") {
           localStorage.setItem("Token", dataResponse.response);
+          localStorage.setItem("idUser", dataResponse.idUser);
           this.router.navigate(['gallery']);
           window.location.reload();
         } else {
