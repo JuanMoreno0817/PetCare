@@ -1,5 +1,9 @@
+import {Types, Genero} from '../Entities/pet'
+
 export interface galleryFilterDTO {
-    edad: number;
-    tipo: string;
-    sexo: string;
+    ageMin?: number;
+    ageMax?: number;
+    tipo?: Types;
+    genero?: Genero;
+    
 }

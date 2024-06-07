@@ -1,16 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PetCareWebAPI.DAL.Entities;
 
 namespace PetCareWebAPI.DTOs
 {
     public class GalleryFilterDTO
     {
-        [Display(Name = "Edad")]
-        public int? Age { get; set; }
-
-        [Display(Name = "Tipo")]
-        public string Tipo { get; set; }
-
-        [Display(Name = "Sexo")]
-        public string Sex { get; set; }
+        public int? AgeMin { get; set; }
+        public int? AgeMax { get; set; }
+        public Pet.Types? Tipo { get; set; }
+        public Pet.Genero? genero { get; set; }
     }
 }

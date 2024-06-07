@@ -7,8 +7,8 @@
         <div class="fs-6">Genero: {{genero === generoEnum.Macho ? 'Macho' : 'Hembra'}}</div>
         <div class="fs-6">Estado: {{Status === statusEnum.Adopted ? 'Adoptado' : 'No Adoptado'}}</div>
         <div class="fs-6">Descripción: {{Description}}</div>
-        <div class="d-flex mt-2 justify-content-center">
-            <a class="link text-decoration-none" (click)="id">Ver más</a>
+        <div class="mt-2">
+            <button type="submit" class="btn btn-outline-dark" routerLink="/petdetail" [queryParams]="{ name: Name }">Ver más</button>
         </div>
     </div>
 </div>

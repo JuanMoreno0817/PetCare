@@ -28,30 +28,13 @@ namespace PetCareWebAPI.Controllers
             return Ok(Pet);
         }
 
+        //Trae la mascota con el nombre asociado
         [HttpGet, ActionName("Get")]
-        [Route("GetPetsByType/{type}")]
-        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByType(int type)
+        [Route("GetPetByName/{name}")]
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByName(string name)
         {
-            var Pet = await _context.Pets.Where(x => x.Tipo == (Pet.Types)type).ToListAsync();
-            if (Pet == null) return NotFound();
-            return Ok(Pet);
-        }
-
-        [HttpGet, ActionName("Get")]
-        [Route("GetPetsByGender/{gender}")]
-        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByGender(int gender)
-        {
-            var Pet = await _context.Pets.Where(x => x.genero == (Pet.Genero)gender).ToListAsync();
-            if (Pet == null) return NotFound();
-            return Ok(Pet);
-        }
-
-        [HttpGet, ActionName("Get")]
-        [Route("GetPetsByStatus")]
-        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByStatus(int status)
-        {
-            var Pet = await _context.Pets.Where(x => x.Status == (Pet.AdoptionStatus)status).ToListAsync();
-            if (Pet == null) return NotFound();
+            var Pet = await _context.Pets.FirstOrDefaultAsync(p => p.Name == name);
+            if (Pet == null) return null;
             return Ok(Pet);
         }
 
@@ -66,9 +49,10 @@ namespace PetCareWebAPI.Controllers
             return Ok(Pet);
         }
 
+        //Trae una mascota que contenga la cadena que envíe el usuario
         [HttpGet, ActionName("Get")]
-        [Route("GetPet/{name}")]
-        public async Task<ActionResult<IEnumerable<Pet>>> GetPetByName(string name)
+        [Route("GetPetsByNameString/{name}")]
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetByNameString(string name)
         {
             var Pet = await _context.Pets.Where(v => v.Name.Contains(name)).ToListAsync();
 
@@ -77,28 +61,38 @@ namespace PetCareWebAPI.Controllers
             return Ok(Pet);
         }
 
-        [HttpGet, ActionName("Get")]
-        [Route("GetPetByFilters")]
-        public async Task<ActionResult<IEnumerable<Pet>>> GetPetByFilters(GalleryFilterDTO filters)
+        [HttpPost]
+        [Route("GetFilteredPets")]
+        public async Task<ActionResult<IEnumerable<Pet>>> GetFilteredPets([FromBody] GalleryFilterDTO filters)
         {
             var query = _context.Pets.AsQueryable();
 
-            if (!string.IsNullOrEmpty(filters.Tipo))
+            if (filters.Tipo.HasValue)
             {
-                query = query.Where(p => p.Tipo.Equals(filters.Tipo));
+                query = query.Where(p => p.Tipo == filters.Tipo);
             }
 
-            if (filters.Age.HasValue)
+            if (filters.genero.HasValue)
             {
-                query = query.Where(p => p.Age == filters.Age);
+                query = query.Where(p => p.genero == filters.genero);
             }
 
-            if (!string.IsNullOrEmpty(filters.Tipo))
+            if (filters.AgeMin.HasValue)
             {
-                query = query.Where(p => p.genero.Equals(filters.Sex));
+                query = query.Where(p => p.Age >= filters.AgeMin);
+            }
+
+            if (filters.AgeMax.HasValue)
+            {
+                query = query.Where(p => p.Age <= filters.AgeMax);
             }
 
             var pets = await query.ToListAsync();
+
+            if (!pets.Any())
+            {
+                return null;
+            }
 
             return Ok(pets);
         }

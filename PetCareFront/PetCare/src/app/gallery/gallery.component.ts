@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GalleryService } from '../../app/gallery/gallery.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CartaComponent } from '../../app/carta/carta.component';
-import { Pet, Genero, AdoptionStatus } from '../Entities/pet';
+import { Pet, Genero, AdoptionStatus, Types } from '../Entities/pet';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { galleryFilterDTO } from './galleryFilter';
 
@@ -13,17 +13,19 @@ import { galleryFilterDTO } from './galleryFilter';
 })
 export class GalleryComponent implements OnInit {
 
-  filterForm: FormGroup;
   pets: Pet[] = [];
   namePet: string = '';
   petNotFound: boolean = false;
 
+  filterForm: FormGroup;
+
   constructor(private galleryServices: GalleryService, private fb: FormBuilder, private activeRouter: ActivatedRoute, private router: Router) {
     this.filterForm = this.fb.group({
-      edad: new FormControl('', Validators.required),
-      tipo: new FormControl('', Validators.required),
-      sexo: new FormControl('', Validators.required)
-    })
+      tipo: [null],
+      genero: [null],
+      ageMin: [null],
+      ageMax: [null]
+    });
   }
 
   ngOnInit(): void {
@@ -32,15 +34,13 @@ export class GalleryComponent implements OnInit {
     });
   }
 
-  GetByFilter(form: galleryFilterDTO){
-    if (this.filterForm.valid) {
-      this.galleryServices.getByFilter(form).subscribe(data => {
-        if (data) {
+  GetFilteredPets(){
+    const filters: galleryFilterDTO = this.filterForm.value;
 
-        } else {
-        }
+    this.galleryServices.getByFilter(filters).subscribe(pets => {
+        this.pets = pets;
+        this.petNotFound = pets.length === 0;
       });
-    }
   }
 
   getPetByName() {
@@ -49,8 +49,7 @@ export class GalleryComponent implements OnInit {
         this.pets = datos;
       });
     } else {
-      this.galleryServices.getPetByName(this.namePet).subscribe(datos => {
-        //console.log(datos);
+      this.galleryServices.getPetByNameString(this.namePet).subscribe(datos => {
         if (datos.length > 0) {
           this.pets = datos;
           this.petNotFound = false;

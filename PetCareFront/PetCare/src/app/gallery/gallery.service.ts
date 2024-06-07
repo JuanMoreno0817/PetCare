@@ -17,16 +17,21 @@ export class GalleryService {
     return this.httpClient.get<Pet[]>("https://localhost:7056/api/Pet/GetPets", {headers});
   }
 
-  getPetByName(name: string): Observable<Pet[]>{
+  getPetByNameString(name: string): Observable<Pet[]>{
     const token = localStorage.getItem('Token'); 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.httpClient.get<Pet[]>(`https://localhost:7056/api/Pet/GetPet/${name}`, {headers});
+    return this.httpClient.get<Pet[]>(`https://localhost:7056/api/Pet/GetPetsByNameString/${name}`, {headers});
   }
 
-  getByFilter(form: galleryFilterDTO){
+  getPetByName(name: string): Observable<Pet>{
     const token = localStorage.getItem('Token'); 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    const params = new HttpParams().set('age', form.edad);
-    return this.httpClient.get<Pet[]>("https://localhost:7056/api/Pet/GetPetByFilters/", {headers, params});
+    return this.httpClient.get<Pet>(`https://localhost:7056/api/Pet/GetPetByName/${name}`, {headers});
+  }
+
+  getByFilter(filters: galleryFilterDTO): Observable<Pet[]> {
+    const token = localStorage.getItem('Token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.httpClient.post<Pet[]>(`https://localhost:7056/api/Pet/GetFilteredPets`, filters, { headers });
   }
 }
