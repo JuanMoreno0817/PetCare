@@ -21,7 +21,9 @@ import { FormvoluntComponent } from './formvolunt/formvolunt.component';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
-import { PetdetailsComponent } from './petdetails/petdetails.component'
+import { PetdetailsComponent } from './petdetails/petdetails.component';
+import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { PetdetailsComponent } from './petdetails/petdetails.component'
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
