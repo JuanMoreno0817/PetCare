@@ -33,7 +33,7 @@ namespace PetCareWebAPI.Controllers
 
             if (persona == null)
             {
-                responseLogin.response = "Invalid credentials"; 
+                responseLogin.response = "Datos erroneos"; 
                 responseLogin.status = "Error";
                 return Ok(responseLogin);
             }
@@ -41,7 +41,7 @@ namespace PetCareWebAPI.Controllers
             responseLogin.response = GenerateToken(persona);
             if(responseLogin.response != null)
                 responseLogin.status = "ok";
-            }
+            
             else
                 return Ok();
 
