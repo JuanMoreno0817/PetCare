@@ -13,7 +13,6 @@ import { Token } from '@angular/compiler';
 })
 export class LoginComponent implements OnInit {
 
-
   loginForm: FormGroup;
 
   constructor(private ApiService: LoginService, private fb: FormBuilder, private router: Router) {

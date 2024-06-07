@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PetCareWebAPI.DAL;
 using PetCareWebAPI.DAL.Entities;
+using PetCareWebAPI.DTOs;
 
 namespace PetCareWebAPI.Controllers
 {
@@ -67,13 +68,39 @@ namespace PetCareWebAPI.Controllers
 
         [HttpGet, ActionName("Get")]
         [Route("GetPet/{name}")]
-        public async Task<ActionResult<Pet>> GetPetByName(string name)
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetByName(string name)
         {
-            var Pet = await _context.Pets.FirstOrDefaultAsync(v => v.Name == name);
+            var Pet = await _context.Pets.Where(v => v.Name.Contains(name)).ToListAsync();
 
-            if (Pet == null) return NotFound("Pet not found");
+            if (Pet == null) return Ok(Enumerable.Empty<Pet>());
 
             return Ok(Pet);
+        }
+
+        [HttpGet, ActionName("Get")]
+        [Route("GetPetByFilters")]
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetByFilters(GalleryFilterDTO filters)
+        {
+            var query = _context.Pets.AsQueryable();
+
+            if (!string.IsNullOrEmpty(filters.Tipo))
+            {
+                query = query.Where(p => p.Tipo.Equals(filters.Tipo));
+            }
+
+            if (filters.Age.HasValue)
+            {
+                query = query.Where(p => p.Age == filters.Age);
+            }
+
+            if (!string.IsNullOrEmpty(filters.Tipo))
+            {
+                query = query.Where(p => p.genero.Equals(filters.Sex));
+            }
+
+            var pets = await query.ToListAsync();
+
+            return Ok(pets);
         }
 
         [Authorize(Policy = "Admin")]

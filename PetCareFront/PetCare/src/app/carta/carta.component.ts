@@ -9,6 +9,7 @@ import { Types } from '../Entities/pet';
   styleUrls: ['./carta.component.css']
 })
 export class CartaComponent implements OnInit {
+  @Input() id: number = 0;
   @Input() img: string = '';
   @Input() Name: string = '';
   @Input() Age: number = 0;

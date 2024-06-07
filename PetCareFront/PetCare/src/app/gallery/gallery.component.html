@@ -5,94 +5,70 @@
             <div class="fs-3">Buscar</div>
             <form class="d-flex" role="search">
                 <input id="namePet" [ngModelOptions]="{standalone: true}" class="form-control me-2" type="search"
-                    placeholder="Search" aria-label="Search" [(ngModel)]="namePet">
-                <button class="btn btn-outline-blue" type="submit" (click)="getPetByName()">Busqueda</button>
+                    placeholder="Search" aria-label="Search" [(ngModel)]="namePet" (change)="getPetByName()">
             </form>
-            <div class="fs-3 mt-3">Filtros</div>
-            <div class="fs-5 my-2">Edad</div>
-            <div class="d-flex gap-2">
-                <div class="input-group input-group-sm">
-                    <input type="text" placeholder="Min" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm">
+            <form [formGroup]="filterForm" (ngSubmit)="GetByFilter(filterForm.value)" >
+                <div class="fs-3 mt-3">Filtros</div>
+                <div class="fs-5 my-2">Edad</div>
+                <div class="d-flex gap-2">
+                    <div class="input-group input-group-sm">
+                        <input type="text" placeholder="Min" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                    <div>-</div>
+                    <div class="input-group input-group-sm">
+                        <input type="text" placeholder="Max" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
                 </div>
-                <div>-</div>
-                <div class="input-group input-group-sm">
-                    <input type="text" placeholder="Max" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm">
+                <div class="fs-5 my-2">Mascota</div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tipo" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Perros
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tipo" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Gatos
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="tipo" id="flexRadioDefault3"
+                            checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Todos
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="fs-5 my-2">Mascota</div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Perros
-                    </label>
+                <div class="fs-5 my-2">Sexo</div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Hembra
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Macho
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2"
+                            checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Todos
+                        </label>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        Gatos
-                    </label>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-outline-blue">Filtrar</button>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault1" id="flexRadioDefault2"
-                        checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        Todos
-                    </label>
-                </div>
-            </div>
-            <div class="fs-5 my-2">Sexo</div>
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Hembra
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        Macho
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2"
-                        checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        Todos
-                    </label>
-                </div>
-            </div>
-            <div class="fs-5 my-2">Pelaje</div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Negro
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Blanco
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                <label class="form-check-label" for="flexCheckChecked">
-                    Naranja
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Manchas
-                </label>
-            </div>
-            <div class="mt-2">
-                <button class="btn btn-outline-blue">Filtrar</button>
-            </div>
+            </form>
         </div>
         <div class="col-lg-10 col-md-9 col-sm-8 py-3" style="overflow-y: auto; max-height: 600px;">
             <div class="row justify-content-center fs-1 fw-bold mb-3">Mascotas</div>
