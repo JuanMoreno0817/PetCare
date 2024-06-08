@@ -240,11 +240,6 @@
         <div class="bg-secondary bg-opacity-50 p-4">
             <div class="fw-bold fs-3 text-center">Agregar mascota</div>
             <div class="input-group my-2">
-                <span class="input-group-text" id="inputGroup-sizing-default">Id</span>
-                <input type="number" class="form-control" placeholder="Apodo" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default" #idPet>
-            </div>
-            <div class="input-group my-2">
                 <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
                 <input type="text" class="form-control" placeholder="Apodo" aria-label="Sizing example input"
                     aria-describedby="inputGroup-sizing-default" #name>
@@ -285,7 +280,7 @@
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Genero</span>
                 <select class="form-select" aria-label="Default select example" #genero>
-                    <option selected>Selecciona el género</option>
+                    <option value="Default" selected>Selecciona el género</option>
                     <option value="0">Hembra</option>
                     <option value="1">Macho</option>
                 </select>

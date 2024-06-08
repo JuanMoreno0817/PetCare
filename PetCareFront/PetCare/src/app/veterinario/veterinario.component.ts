@@ -17,7 +17,6 @@ export class VeterinarioComponent implements OnInit {
   @ViewChild('updateDate') updateDate!: ElementRef;
   @ViewChild('btnActualizar') btnActualizar!: ElementRef;
   //Elementos para creacino mascota
-  @ViewChild('idPet') idPet!: ElementRef;
   @ViewChild('name') name!: ElementRef;
   @ViewChild('age') age!: ElementRef;
   @ViewChild('color') color!: ElementRef;
@@ -127,7 +126,6 @@ export class VeterinarioComponent implements OnInit {
 
   createPet(){
     let pet: Pet = {
-      idPet: Number(this.idPet.nativeElement.value),
       name: this.name.nativeElement.value,
       age: Number(this.age.nativeElement.value),
       color: this.color.nativeElement.value,
@@ -143,6 +141,15 @@ export class VeterinarioComponent implements OnInit {
     //console.log(pet);
     this.VeterinarioServices.createPet(pet).subscribe(datos =>{
       if (datos) {
+        this.age.nativeElement.value = null;
+        this.name.nativeElement.value = "";
+        this.color.nativeElement.value = "";
+        this.race.nativeElement.value = "";
+        this.weight.nativeElement.value = null;
+        this.height.nativeElement.value = null;
+        this.descripcion.nativeElement.value = "";
+        this.genero.nativeElement.value = "Default";
+        this.Type.nativeElement.value = "Default";
         this.alerta.showSuccess("Mascota agregada exitosamente", "Hecho");
       } else {
         this.alerta.showError("La mascota no se agregó", "Error");

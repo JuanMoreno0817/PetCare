@@ -52,6 +52,6 @@ export class VeterinarioService {
   createPet(pet: Pet):Observable<Pet>{
     const token = localStorage.getItem('Token'); // Obtén el token del localStorage
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.httpClient.post<Pet>(`https://localhost:7056/api/Pet/CreatePet`, { headers });
+    return this.httpClient.post<Pet>(`https://localhost:7056/api/Pet/CreatePet`, pet, { headers });
   }
 }
