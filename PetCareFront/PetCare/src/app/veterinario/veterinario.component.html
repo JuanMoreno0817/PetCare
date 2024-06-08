@@ -44,9 +44,9 @@
                         <div class="col w-100" style="max-height: 220px; overflow-y: auto;">
                             <ng-container *ngIf="medicalRecords">
                                 <div class="d-flex justify-content-between bg-secondary text-white rounded p-2 my-1 shadow w-100" *ngFor="let medicalRecord of medicalRecords">
-                                    <div class="fs-6">{{medicalRecord.idMedicalRe}}</div>
-                                    <div class="fs-6">{{medicalRecord.createDate}}</div>
-                                    <a href="#" class="link link-info text-decoration-none">Ver</a>
+                                    <div class="fs-6">Referencia <br>{{medicalRecord.idMedicalRe}}</div>
+                                    <div *ngIf="medicalRecord.createDate" class="fs-6">Fecha <br>{{formatDateString(medicalRecord.createDate.toString())}}</div>
+                                    <a href="#" class="link link-info my-auto text-decoration-none">Ver</a>
                                 </div>
                             </ng-container>
                         </div>
@@ -235,55 +235,68 @@
             </div>
         </div>
     </div>
-    <!-- Columna Ver Mascotas-->
+    <!-- Columna Crear Mascotas-->
      <div class="col-sm-7 col-md-7 col-lg-8 p-4" *ngIf="show == '3'">
         <div class="bg-secondary bg-opacity-50 p-4">
             <div class="fw-bold fs-3 text-center">Agregar mascota</div>
             <div class="input-group my-2">
+                <span class="input-group-text" id="inputGroup-sizing-default">Id</span>
+                <input type="number" class="form-control" placeholder="Apodo" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default" #idPet>
+            </div>
+            <div class="input-group my-2">
                 <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
                 <input type="text" class="form-control" placeholder="Apodo" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default">
+                    aria-describedby="inputGroup-sizing-default" #name>
             </div>
             <div class="input-group my-2">
                 <span class="input-group-text" id="inputGroup-sizing-default">Edad</span>
                 <input type="number" class="form-control" placeholder="Años" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default">
+                    aria-describedby="inputGroup-sizing-default" #age>
             </div>
             <div class="input-group my-2">
                 <span class="input-group-text" id="inputGroup-sizing-default">Color</span>
                 <input type="text" class="form-control" placeholder="Color simple" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default">
+                    aria-describedby="inputGroup-sizing-default" #color>
             </div>
             <div class="input-group my-2">
                 <span class="input-group-text" id="inputGroup-sizing-default">Raza</span>
                 <input type="text" class="form-control" placeholder="Especie" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default">
+                    aria-describedby="inputGroup-sizing-default" #race>
             </div>
             <div class="input-group my-2">
                 <span class="input-group-text" id="inputGroup-sizing-default">Peso</span>
                 <input type="number" class="form-control" placeholder="Altura en Kg" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default">
+                    aria-describedby="inputGroup-sizing-default" #weight>
             </div>
             <div class="input-group my-2">
                 <span class="input-group-text" id="inputGroup-sizing-default">Altura</span>
                 <input type="number" class="form-control" placeholder="Altura en cm" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-default">
+                    aria-describedby="inputGroup-sizing-default" #height>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Tipo</span>
+                <select class="form-select" aria-label="Default select example" #Type>
+                    <option selected>Selecciona el género</option>
+                    <option value="0">Gato</option>
+                    <option value="1">Perro</option>
+                </select>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Genero</span>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" #genero>
                     <option selected>Selecciona el género</option>
+                    <option value="0">Hembra</option>
                     <option value="1">Macho</option>
-                    <option value="2">Hembra</option>
                 </select>
             </div>
             <div class="form-floating h-100">
                 <textarea class="form-control h-100" placeholder="Leave a comment here"
-                    id="floatingTextarea2"></textarea>
+                    id="floatingTextarea2" #descripcion></textarea>
                 <label for="floatingTextarea2">Descripción o personalidad</label>
             </div>
             <div class="d-flex justify-content-end mt-3">
-                <a class="btn btn-success">Agregar</a>
+                <button class="btn btn-success" (click)="createPet()">Agregar</button>
             </div>
         </div>
      </div>

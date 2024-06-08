@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MedicalRecord } from '../Entities/medical-record';
 import { VeterinarioService } from './veterinario.services';
 import { AlertasService } from '../alertas/alertas.service';
+import { Pet } from '../Entities/pet';
 
 @Component({
   selector: 'app-veterinario',
@@ -9,12 +10,23 @@ import { AlertasService } from '../alertas/alertas.service';
   styleUrls: ['./veterinario.component.css']
 })
 export class VeterinarioComponent implements OnInit {
-
+  //Elementos input de historial
   @ViewChild('idHistorial') idHistorial!: ElementRef;
   @ViewChild('description') description!: ElementRef;
   @ViewChild('createDate') createDate!: ElementRef;
   @ViewChild('updateDate') updateDate!: ElementRef;
   @ViewChild('btnActualizar') btnActualizar!: ElementRef;
+  //Elementos para creacino mascota
+  @ViewChild('idPet') idPet!: ElementRef;
+  @ViewChild('name') name!: ElementRef;
+  @ViewChild('age') age!: ElementRef;
+  @ViewChild('color') color!: ElementRef;
+  @ViewChild('race') race!: ElementRef;
+  @ViewChild('weight') weight!: ElementRef;
+  @ViewChild('height') height!: ElementRef;
+  @ViewChild('Type') Type!: ElementRef;
+  @ViewChild('genero') genero!: ElementRef;
+  @ViewChild('descripcion') descripcion!: ElementRef;
 
   medicalRecords: MedicalRecord[] = [];
   vet: any = {};
@@ -36,12 +48,15 @@ export class VeterinarioComponent implements OnInit {
   getMedicalRecord(id: string) {
     this.VeterinarioServices.getMedicalRecord(id).subscribe(datos => {
       //console.log(datos);
-      this.description.nativeElement.value = datos.description;
-      this.createDate.nativeElement.value = datos.createDate;
-      this.updateDate.nativeElement.value = datos.updateDate;
-      this.idHistorial.nativeElement.disabled = true;
-      this.description.nativeElement.disabled = false;
-      this.btnActualizar.nativeElement.disabled = false;
+      if(datos){
+        this.description.nativeElement.value = datos.description;
+        if(datos.createDate)
+          this.createDate.nativeElement.value = this.formatDateString(datos.createDate.toString());
+        this.updateDate.nativeElement.value = datos.updateDate;
+        this.idHistorial.nativeElement.disabled = true;
+        this.description.nativeElement.disabled = false;
+        this.btnActualizar.nativeElement.disabled = false;
+      }
     });
   }
 
@@ -108,6 +123,31 @@ export class VeterinarioComponent implements OnInit {
         this.alerta.showError("El historial no se eliminó", "Error");
       }
     });
+  }
+
+  createPet(){
+    let pet: Pet = {
+      idPet: Number(this.idPet.nativeElement.value),
+      name: this.name.nativeElement.value,
+      age: Number(this.age.nativeElement.value),
+      color: this.color.nativeElement.value,
+      race: this.race.nativeElement.value,
+      weight: Number(this.weight.nativeElement.value),
+      height: Number(this.height.nativeElement.value),
+      description: this.descripcion.nativeElement.value,
+      genero: Number(this.genero.nativeElement.value),
+      status: 0,
+      tipo: Number(this.Type.nativeElement.value),
+      idMedicalRecord: null
+    }
+    //console.log(pet);
+    this.VeterinarioServices.createPet(pet).subscribe(datos =>{
+      if (datos) {
+        this.alerta.showSuccess("Mascota agregada exitosamente", "Hecho");
+      } else {
+        this.alerta.showError("La mascota no se agregó", "Error");
+      }
+    })
   }
 
   formatDateString(dateString: string): string {
