@@ -5,6 +5,7 @@ import { LogInDTO } from './login';
 import { Router } from '@angular/router';
 import { ResponseLogin } from './login.response';
 import { Token } from '@angular/compiler';
+import { AlertasService } from '../alertas/alertas.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private ApiService: LoginService, private fb: FormBuilder, private router: Router) {
+  constructor(private ApiService: LoginService, private fb: FormBuilder, private router: Router, private alerta: AlertasService) {
     this.loginForm = this.fb.group({
       Email: new FormControl('', Validators.required),
       Password: new FormControl('', Validators.required)
@@ -45,8 +46,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['gallery']);
           window.location.reload();
         } else {
-          this.errorStatus = true;
           this.errorMsj = dataResponse.response;
+          this.alerta.showError(this.errorMsj,'Error');
         }
       });
     }

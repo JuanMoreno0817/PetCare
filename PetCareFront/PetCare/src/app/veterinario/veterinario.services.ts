@@ -22,5 +22,5 @@ export class VeterinarioService {
     const idUser = localStorage.getItem('idUser');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.httpClient.get<Vet>(`https://localhost:7056/api/Vet/GetVet/${idUser}`, { headers });
-}
+  }
 }

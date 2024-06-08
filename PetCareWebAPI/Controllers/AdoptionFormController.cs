@@ -32,9 +32,11 @@ namespace PetCareWebAPI.Controllers
 
         [HttpGet, ActionName("Get")]
         [Route("GetAdoptionForm/{id}")]
-        public async Task<ActionResult<AdoptionForm>> GetAdoptionFormByIdentification(Guid id)
+        public async Task<ActionResult<AdoptionForm>> GetAdoptionFormByIdentification(string id)
         {
-            var adoptionForms = await _context.AdoptionForms.FirstOrDefaultAsync(a => a.IdForm == id);
+            var adoptionForms = await _context.AdoptionForms.Include(a => a.Adopter)
+                                                        .Include(a => a.Pet)
+                                                        .FirstOrDefaultAsync(a =>                                             a.Adopter.Name == id);
 
             if (adoptionForms == null) return NotFound("Adoption form not found");
 
