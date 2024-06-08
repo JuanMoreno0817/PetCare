@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Pshicologist } from '../Entities/pshicologist';
 import { Vet } from '../Entities/vet';
 import { Adopter } from '../Entities/adopter';
+import { Pet } from '../Entities/pet';
+import { AdoptionForm } from '../Entities/adoption-form';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +38,29 @@ export class PsicologoService {
     const idUser = localStorage.getItem('idUser');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.httpClient.get<Pshicologist>(`https://localhost:7056/api/Psichologist/GetPsichologist/${idUser}`, { headers });
+  }
+
+  crearCita(appointment: Appointment):Observable<Appointment>{
+    const token = localStorage.getItem('Token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json');
+    return this.httpClient.post<Appointment>(`https://localhost:7056/api/Appointment/CreateAppointment`, appointment, { headers })
+  }
+
+  getInfoAppointment(guid: string): Observable<Appointment> {
+    const token = localStorage.getItem('Token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.httpClient.get<Appointment>(`https://localhost:7056/api/Appointment/GetAppointment/${guid}`, { headers });
+  }
+
+  getAdoptionForm(guid: string): Observable<AdoptionForm>{
+    const token = localStorage.getItem('Token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return this.httpClient.get<AdoptionForm>(`https://localhost:7056/api/AdoptionForm/GetAdoptionForm/${guid}`, { headers });
+  }
+
+  confirmarCita(pet: Pet): Observable<Pet>{
+    const token = localStorage.getItem('Token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.httpClient.put<Pet>(`https://localhost:7056/api/Pet/EditPet/${pet.idPet}`, pet, {headers});
   }
 }

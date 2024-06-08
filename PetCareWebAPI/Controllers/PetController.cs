@@ -123,7 +123,7 @@ namespace PetCareWebAPI.Controllers
         [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
         [Route("EditPet/{id}")]
-        public async Task<IActionResult> EditPet(int id, Pet Pet)
+        public async Task<ActionResult<Pet>> EditPet(int id, Pet Pet)
         {
             try
             {

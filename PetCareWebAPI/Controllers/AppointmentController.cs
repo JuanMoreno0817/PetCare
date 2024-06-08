@@ -7,7 +7,6 @@ using PetCareWebAPI.DAL.Entities;
 
 namespace PetCareWebAPI.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AppointmentController : ControllerBase
@@ -19,12 +18,14 @@ namespace PetCareWebAPI.Controllers
             _context = context;
         }
 
-        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetAppointments")]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
         {
-            var appointments = await _context.Appointments.ToListAsync();
+            var appointments = await _context.Appointments
+                                                        .Include(a => a.Adopter)
+                                                        .Include(a => a.Psichologist)
+                                                        .ToListAsync();
             if (appointments == null) return NotFound();
             return appointments;
         }
@@ -33,13 +34,16 @@ namespace PetCareWebAPI.Controllers
         [Route("GetAppointment/{id}")]
         public async Task<ActionResult<Appointment>> GetAppointmentByIdentification(Guid id)
         {
-            var appointment = await _context.Appointments.FirstOrDefaultAsync(a => a.IDAppointment == id);
+            var appointment = await _context.Appointments.Include(a => a.Adopter)
+                                                        .Include(a =>a.Psichologist)
+                                                        .FirstOrDefaultAsync(a =>                                              a.IDAppointment == id);
 
             if (appointment == null) return NotFound("Appointment not found");
 
             return appointment;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost, ActionName("Create")]
         [Route("CreateAppointment")]
         public async Task<ActionResult<Appointment>> CreateAppointment(Appointment appointment)
@@ -66,9 +70,10 @@ namespace PetCareWebAPI.Controllers
             return Ok(appointment);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
         [Route("EditAppointment/{id}")]
-        public async Task<IActionResult> EditAppointment(Guid id, Appointment appointment)
+        public async Task<ActionResult<Appointment>> EditAppointment(Guid id, Appointment appointment)
         {
             try
             {

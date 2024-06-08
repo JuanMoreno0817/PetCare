@@ -14,7 +14,7 @@ export class PetdetailsService {
   createAdoptionForm(adoptionForm: AdoptionForm): Observable<AdoptionForm>{
     console.log('Aquí recién entrando al servicio', adoptionForm);
     const token = localStorage.getItem('Token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json');;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json');
     return this.httpClient.post<AdoptionForm>("https://localhost:7056/api/AdoptionForm/CreateAdoptionForm", adoptionForm, { headers });
   }
 

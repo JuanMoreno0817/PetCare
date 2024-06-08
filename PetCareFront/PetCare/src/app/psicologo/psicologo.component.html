@@ -41,9 +41,18 @@
                         <div class="col w-100" style="max-height: 220px; overflow-y: auto;">
                             <ng-container *ngIf="appointments">
                                 <div class="d-flex justify-content-between bg-secondary text-white rounded p-2 my-1 shadow w-100" *ngFor="let appointment of appointments">
-                                    <div class="fs-6">{{appointment.idAppointment}}</div>
-                                    <div class="fs-6">{{appointment.appointmentDate}}</div>
-                                    <div class="fs-6">{{appointment.adopter}}</div>
+                                    <div class="col">
+                                        Referencia
+                                        <div class="fs-6">{{appointment.idAppointment}}</div>
+                                      </div>
+                                      <div class="col">
+                                        Fecha
+                                        <div class="fs-6">{{appointment.appointmentDate}}</div>
+                                      </div>
+                                      <div class="col">
+                                        Adoptante
+                                        <div class="fs-6">{{appointment.adopter?.name}}</div>
+                                      </div>
                                     <a href="#" class="link link-info text-decoration-none">Ver</a>
                                 </div>
                             </ng-container>
@@ -59,66 +68,55 @@
                         <div class="col">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Creacion</span>
-                                <input type="date" class="form-control" aria-label="Sizing example input"
+                                <input type="date" [(ngModel)]="appointmentDate" name="appointmentDate" class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Psicólogo</span>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" [(ngModel)]="pshicologist" name="pshicologist" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
-                                    <option *ngFor="let psicologo of pshicologists" [value]='psicologo.identification'>{{psicologo.name}}</option>
+                                    <option *ngFor="let psicologo of pshicologists" [ngValue]='psicologo'>{{psicologo.name}} {{psicologo.lastname}}</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Adoptante</span>
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" [(ngModel)]="adopter" name="adopter" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
-                                    <option *ngFor="let adopter of adopters" [value]='adopter.identification'>{{adopter.name}}</option>
+                                    <option *ngFor="let adopter of adopters" [ngValue]='adopter'>{{adopter.name}} {{adopter.lastname}}</option>
                                 </select>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-floating h-100">
-                                <textarea class="form-control h-100" placeholder="Leave a comment here"
-                                    id="floatingTextarea2"></textarea>
-                                <label for="floatingTextarea2">Observaciones</label>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-3 w-100">
-                        <button type="submit" class="btn btn-success">Confirmar</button>
+                        <button type="submit" class="btn btn-success" (click)="crearCita()">Crear</button>
                     </div>
                 </form>
             </div>
             <!-- Cuadro de informacion CRUD ACTUALIZAR-->
             <div class="col bg-secondary bg-opacity-50 p-3 rounded shadow h-50" *ngSwitchCase="3">
                 <form id="nuevaCita">
-                    <h1 class="fs-3 text-center mb-3">Actualizar cita</h1>
+                    <h1 class="fs-3 text-center mb-3">Aceptar Adopción</h1>
                     <div class="row justify-content-between gap-2">
                         <div class="col">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Id Cita</span>
-                                <input type="number" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
+                                <input type="text" class="form-control" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" [(ngModel)]="guid" [ngModelOptions]="{standalone: true}">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Creacion</span>
                                 <input type="date" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default" disabled>
+                                    aria-describedby="inputGroup-sizing-default" [value]="appointment?.appointmentDate | date:'yyyy-MM-dd'" disabled>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Psicólogo</span>
-                                <select class="form-select" aria-label="Default select example" disabled>
-                                    <option selected>Open this select menu</option>
-                                    <option *ngFor="let psicologo of pshicologists" [value]='psicologo.identification'>{{psicologo.name}}</option>
-                                </select>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" [value]="appointment?.psichologist?.name" disabled>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Adoptante</span>
-                                <select class="form-select" aria-label="Default select example" disabled>
-                                    <option selected>Open this select menu</option>
-                                    <option *ngFor="let adopter of adopters" [value]='adopter.identification'>{{adopter.name}}</option>
-                                </select>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" [value]="appointment?.adopter?.name" disabled>
                             </div>
                         </div>
                         <div class="col">
@@ -130,40 +128,31 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-3 w-100 gap-2">
-                        <button type="submit" class="btn btn-outline-primary">Buscar</button>
-                        <button type="submit" class="btn btn-warning">Actualizar</button>
+                        <button type="submit" class="btn btn-outline-primary" (click)="buscarCita()">Buscar</button>
+                        <button type="submit" class="btn btn-warning" (click)="confirmarCita()">Confirmar Visita</button>
                     </div>
                 </form>
             </div>
             <!-- Cuadro de informacion CRUD ELIMINAR-->
             <div class="col bg-secondary bg-opacity-50 p-3 rounded shadow h-50" *ngSwitchCase="4">
                 <form id="nuevaCita">
-                    <h1 class="fs-3 text-center mb-3">Cancelar cita</h1>
+                    <h1 class="fs-3 text-center mb-3">Denegar adopción</h1>
                     <div class="row justify-content-between gap-2">
                         <div class="col">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Id Cita</span>
-                                <input type="number" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Creacion</span>
-                                <input type="date" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default" disabled>
+                                <input type="text" class="form-control" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" [(ngModel)]="guid" [ngModelOptions]="{standalone: true}">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Psicólogo</span>
-                                <select class="form-select" aria-label="Default select example" disabled>
-                                    <option selected>Open this select menu</option>
-                                    <option *ngFor="let psicologo of pshicologists" [value]='psicologo.identification'>{{psicologo.name}}</option>
-                                </select>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" [value]="appointment?.psichologist?.name" disabled>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Adoptante</span>
-                                <select class="form-select" aria-label="Default select example" disabled>
-                                    <option selected>Open this select menu</option>
-                                    <option *ngFor="let adopter of adopters" [value]='adopter.identification'>{{adopter.name}}</option>
-                                </select>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" [value]="appointment?.adopter?.name" disabled>
                             </div>
                         </div>
                         <div class="col">
@@ -175,8 +164,8 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-3 w-100 gap-2">
-                        <button type="submit" class="btn btn-outline-primary">Buscar</button>
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <button type="submit" class="btn btn-outline-primary" (click)="buscarCita()">Buscar</button>
+                        <button type="submit" class="btn btn-danger" (click)="denegarCita()">Eliminar</button>
                     </div>
                 </form>
             </div>
@@ -193,12 +182,12 @@
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist.name" id="name" disabled>
+                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist?.name" id="name" disabled>
                         </div>
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Apellido</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist.lastname" id="lastname" disabled>
+                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist?.lastname" id="lastname" disabled>
                         </div>
                     </div>
                 </div>
@@ -207,14 +196,14 @@
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Telefono</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist.cellphone" disabled>
+                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist?.cellphone" disabled>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Correo</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist.email" disabled>
+                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist?.email" disabled>
                         </div>
                     </div>
                 </div>
@@ -223,14 +212,14 @@
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Carta</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist.professionalCard" name="ocupation" disabled>
+                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist?.professionalCard" name="ocupation" disabled>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Experiencia</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist.ageExperiencie" disabled>
+                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist?.ageExperiencie" disabled>
                         </div>
                     </div>
                 </div>
@@ -238,15 +227,15 @@
                     <div class="col">
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Nacimiento</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" [value]="formatDateString(pshicologist.borndate)" disabled>
+                            <input type="date" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist?.borndate" disabled>
                         </div>
                     </div>
                     <div class="col">
                         <div class="input-group my-2">
                             <span class="input-group-text" id="inputGroup-sizing-default">Tipo de usuario</span>
                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist.userType === 1? 'Usuario': 'Administrador'" disabled>
+                                aria-describedby="inputGroup-sizing-default" [value]="pshicologist?.userType === 1? 'Usuario': 'Administrador'" disabled>
                         </div>
                     </div>
                 </div>
