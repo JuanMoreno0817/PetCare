@@ -7,7 +7,6 @@ using PetCareWebAPI.DAL.Entities;
 
 namespace PetCareWebAPI.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AppointmentController : ControllerBase
@@ -19,7 +18,6 @@ namespace PetCareWebAPI.Controllers
             _context = context;
         }
 
-        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetAppointments")]
         public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
@@ -40,6 +38,7 @@ namespace PetCareWebAPI.Controllers
             return appointment;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost, ActionName("Create")]
         [Route("CreateAppointment")]
         public async Task<ActionResult<Appointment>> CreateAppointment(Appointment appointment)
@@ -66,6 +65,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(appointment);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
         [Route("EditAppointment/{id}")]
         public async Task<IActionResult> EditAppointment(Guid id, Appointment appointment)

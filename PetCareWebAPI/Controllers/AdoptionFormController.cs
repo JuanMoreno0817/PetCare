@@ -8,7 +8,6 @@ using PetCareWebAPI.Response;
 
 namespace PetCareWebAPI.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AdoptionFormController : ControllerBase
@@ -30,6 +29,7 @@ namespace PetCareWebAPI.Controllers
             return adoptionForms;
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpGet, ActionName("Get")]
         [Route("GetAdoptionForm/{id}")]
         public async Task<ActionResult<AdoptionForm>> GetAdoptionFormByIdentification(Guid id)
@@ -41,6 +41,18 @@ namespace PetCareWebAPI.Controllers
             return adoptionForms;
         }
 
+        [HttpGet, ActionName("Get")]
+        [Route("GetAdoptionByAdopter/{id}")]
+        public async Task<ActionResult<IEnumerable<AdoptionForm>>> GetAdoptionByAdopter(int id)
+        {
+            var adoptionForms = await _context.AdoptionForms.Where(a => a.Adopter.Identification == id).ToListAsync();
+
+            if (adoptionForms == null) return NotFound("Adoption form not found");
+
+            return adoptionForms;
+        }
+
+        [Authorize(Policy = "Admin")]
         [HttpPost]
         [Route("CreateAdoptionForm")]
         public async Task<ActionResult<AdoptionForm>> CreateAdoptionForm([FromBody] AdoptionForm adoptionForm)
@@ -71,6 +83,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(adoptionForm);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
         [Route("EditAdoptionForm/{id}")]
         public async Task<IActionResult> EditAdoptionForm(Guid id, AdoptionForm adoptionForm)
@@ -95,6 +108,7 @@ namespace PetCareWebAPI.Controllers
             return Ok(adoptionForm);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpDelete, ActionName("Delete")]
         [Route("DeleteAdoptionForm/{id}")]
         public async Task<IActionResult> DeleteAdoptionForm(Guid id)
