@@ -14,10 +14,6 @@ export class NavbarComponent implements OnInit {
     this.checkLocalStorage();
   }
 
-  irAPerfil(){
-    
-  }
-
   checkLocalStorage() {
     if (localStorage.getItem('Token')) {
       this.log = true;

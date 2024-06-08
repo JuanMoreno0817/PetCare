@@ -59,45 +59,15 @@
                     <h1 class="fs-3 text-center mb-3">Crear historial</h1>
                     <div class="row justify-content-between gap-2">
                         <div class="col">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Id Historial</span>
-                                <input type="number" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Creacion</span>
-                                <input type="date" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Psicólogo</span>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Adoptante</span>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col">
                             <div class="form-floating h-100">
                                 <textarea class="form-control h-100" placeholder="Leave a comment here"
-                                    id="floatingTextarea2"></textarea>
+                                    #description></textarea>
                                 <label for="floatingTextarea2">Observaciones</label>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-3 w-100">
-                        <button type="submit" class="btn btn-success">Confirmar</button>
+                        <button type="submit" class="btn btn-success" (click)="postMedicalRecord()">Confirmar</button>
                     </div>
                 </form>
             </div>
@@ -108,94 +78,64 @@
                     <div class="row justify-content-between gap-2">
                         <div class="col">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Id Historial</span>
-                                <input type="number" class="form-control" aria-label="Sizing example input"
+                                <span class="input-group-text" id="idHistorial">Id Historial</span>
+                                <input type="text" #idHistorial class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Creacion</span>
-                                <input type="date" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default" disabled>
+                                <input type="datetime" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" #createDate disabled>
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Psicólogo</span>
-                                <select class="form-select" aria-label="Default select example" disabled>
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
+                                <span class="input-group-text" id="inputGroup-sizing-default">Actualizacion</span>
+                                <input type="datetime" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" #updateDate disabled>
                             </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Adoptante</span>
-                                <select class="form-select" aria-label="Default select example" disabled>
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-floating h-100">
-                                <textarea class="form-control h-100" placeholder="Leave a comment here"
-                                    id="floatingTextarea2" disabled></textarea>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here"
+                                    id="floatingTextarea2" #description disabled></textarea>
                                 <label for="floatingTextarea2">Observaciones</label>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-3 w-100 gap-2">
-                        <button type="submit" class="btn btn-outline-primary">Buscar</button>
-                        <button type="submit" class="btn btn-warning">Actualizar</button>
+                        <button type="submit" class="btn btn-outline-primary" (click)="getMedicalRecord(idHistorial.value)">Buscar</button>
+                        <button type="submit" class="btn btn-warning" (click)="putMedicalRecord()" #btnActualizar disabled>Actualizar</button>
                     </div>
                 </form>
             </div>
             <!-- Cuadro de informacion CRUD ELIMINAR-->
             <div class="col bg-secondary bg-opacity-50 p-3 rounded shadow h-50" *ngSwitchCase="4">
-                <form id="nuevoHistorial">
+                <form id="nuevaHistorial">
                     <h1 class="fs-3 text-center mb-3">Eliminar historial</h1>
                     <div class="row justify-content-between gap-2">
                         <div class="col">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Id Historial</span>
-                                <input type="number" class="form-control" aria-label="Sizing example input"
+                                <span class="input-group-text" id="idHistorial">Id Historial</span>
+                                <input type="text" #idHistorial class="form-control" aria-label="Sizing example input"
                                     aria-describedby="inputGroup-sizing-default">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Creacion</span>
-                                <input type="date" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-default" disabled>
+                                <input type="datetime" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" #createDate disabled>
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Psicólogo</span>
-                                <select class="form-select" aria-label="Default select example" disabled>
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
+                                <span class="input-group-text" id="inputGroup-sizing-default">Actualizacion</span>
+                                <input type="datetime" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-default" #updateDate disabled>
                             </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Adoptante</span>
-                                <select class="form-select" aria-label="Default select example" disabled>
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-floating h-100">
-                                <textarea class="form-control h-100" placeholder="Leave a comment here"
-                                    id="floatingTextarea2" disabled></textarea>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here"
+                                    id="floatingTextarea2" #description disabled></textarea>
                                 <label for="floatingTextarea2">Observaciones</label>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-end mt-3 w-100 gap-2">
-                        <button type="submit" class="btn btn-outline-primary">Buscar</button>
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <button type="submit" class="btn btn-outline-primary" (click)="getMedicalRecord(idHistorial.value)">Buscar</button>
+                        <button type="submit" class="btn btn-danger" (click)="deleteMedicalRecord(idHistorial.value)" #btnActualizar disabled>Eliminar</button>
                     </div>
                 </form>
             </div>

@@ -68,12 +68,11 @@ namespace PetCareWebAPI.Controllers
 
         [Authorize(Policy = "Admin")]
         [HttpPut, ActionName("Edit")]
-        [Route("EditMedicalRecord/{id}")]
-        public async Task<IActionResult> EditMedicalRecord(Guid id, MedicalRecord medicalRecord)
+        [Route("EditMedicalRecord")]
+        public async Task<IActionResult> EditMedicalRecord(MedicalRecord medicalRecord)
         {
             try
             {
-                if (id != medicalRecord.IdMedicalRe) return NotFound("Medical record not found");
                 medicalRecord.UpdateDate = DateTime.Now;
                 _context.MedicalRecords.Update(medicalRecord);
                 await _context.SaveChangesAsync();
@@ -103,7 +102,7 @@ namespace PetCareWebAPI.Controllers
             _context.MedicalRecords.Remove(medicalRecord);
             await _context.SaveChangesAsync();
 
-            return Ok(String.Format("El historial médico {0} fue eliminad@ con éxito!", medicalRecord.IdMedicalRe));
+            return Ok(medicalRecord);
         }
     }
 }
