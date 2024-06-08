@@ -49,7 +49,6 @@ export class PetdetailsComponent implements OnInit{
             adopter: this.adopter,
             pet: this.pet
           };
-          
           this.petDetailService.createAdoptionForm(this.adoptionForm).subscribe({
             next: datos => {
               this.postSuccess = datos !== null ? false : true;

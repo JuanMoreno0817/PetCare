@@ -54,7 +54,6 @@ namespace PetCareWebAPI.Controllers
             return adoptionForms;
         }
 
-        [Authorize(Policy = "Admin")]
         [HttpPost]
         [Route("CreateAdoptionForm")]
         public async Task<ActionResult<AdoptionForm>> CreateAdoptionForm([FromBody] AdoptionForm adoptionForm)

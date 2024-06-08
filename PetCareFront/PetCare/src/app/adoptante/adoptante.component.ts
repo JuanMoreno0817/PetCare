@@ -43,9 +43,9 @@ export class AdoptanteComponent implements OnInit {
   getAppointment(id: string) {
     this.adoptanteService.getAppointment(id).subscribe(datos => {
       console.log(datos);
-      this.appointmentDate.nativeElement.value = datos.appointmentDate;
-      this.adopter.nativeElement.value = datos.adopter;
-      this.psichologist.nativeElement.value = datos.psichologist;
+      this.appointmentDate.nativeElement.value = this.formatDateString(datos.appointmentDate.toString());
+      this.adopter.nativeElement.value = datos.adopter?.name + " " + datos.adopter?.lastname;
+      this.psichologist.nativeElement.value = datos.psichologist?.name + " " + datos.psichologist?.lastname;
       this.idAppointment.nativeElement.disabled = true;
       this.btnActualizar.nativeElement.disabled = false;
     });
