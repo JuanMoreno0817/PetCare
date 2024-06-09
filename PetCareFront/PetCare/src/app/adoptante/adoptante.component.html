@@ -61,8 +61,8 @@
                                 <div class="d-flex justify-content-between bg-secondary text-white rounded p-2 my-1 shadow w-100" *ngFor="let adoption of adoptions">
                                     <div class="fs-6">Referencia <br>{{adoption.idForm}}</div>
                                     <div class="fs-6">Fecha <br>{{adoption.createDate}}</div>
-                                    <div class="fs-6">Mascota <br>{{adoption.pet}}</div>
-                                    <a href="#" class="link link-info text-decoration-none">Ver</a>
+                                    <div class="fs-6">Mascota <br>{{adoption.pet.name}}</div>
+                                    <a href="#" class="link link-info text-decoration-none my-auto">Ver</a>
                                 </div>
                             </ng-container>
                         </div>

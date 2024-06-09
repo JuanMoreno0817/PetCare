@@ -36,7 +36,7 @@ namespace PetCareWebAPI.Controllers
         {
             var adoptionForms = await _context.AdoptionForms.Include(a => a.Adopter)
                                                         .Include(a => a.Pet)
-                                                        .FirstOrDefaultAsync(a =>                                             a.Adopter.Name == id);
+                                                        .FirstOrDefaultAsync(a => a.Adopter.Name == id);
 
             if (adoptionForms == null) return NotFound("Adoption form not found");
 
@@ -47,7 +47,10 @@ namespace PetCareWebAPI.Controllers
         [Route("GetAdoptionByAdopter/{id}")]
         public async Task<ActionResult<IEnumerable<AdoptionForm>>> GetAdoptionByAdopter(int id)
         {
-            var adoptionForms = await _context.AdoptionForms.Where(a => a.Adopter.Identification == id).ToListAsync();
+            var adoptionForms = await _context.AdoptionForms.Include(a => a.Adopter)
+                                                            .Include(a => a.Pet)
+                                                            .Where(a => a.Adopter.Identification == id)
+                                                            .ToListAsync();
 
             if (adoptionForms == null) return NotFound("Adoption form not found");
 
