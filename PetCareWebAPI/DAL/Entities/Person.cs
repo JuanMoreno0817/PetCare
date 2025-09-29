@@ -11,6 +11,9 @@ namespace PetCareWebAPI.DAL.Entities
         [Display(Name = "Documento")]
         public int Identification { get; set; }
 
+        [Display(Name = "Tipo de Documento")]
+        public string TypeOfDocument { get; set; }
+
         [Display(Name = "Nombres")]
         [MaxLength(20, ErrorMessage = "The {0} field can not have more than {1} characters.")]
         public string Name { get; set; }

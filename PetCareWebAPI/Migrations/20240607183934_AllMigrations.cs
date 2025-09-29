@@ -16,6 +16,7 @@ namespace PetCareWebAPI.Migrations
                 columns: table => new
                 {
                     Identification = table.Column<int>(type: "int", nullable: true),
+                    TypeOfDocument = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Lastname = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     Cellphone = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),

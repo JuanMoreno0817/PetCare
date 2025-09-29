@@ -186,6 +186,7 @@ namespace PetCareWebAPI.DAL
                 _context.Adopters.Add(new Adopter
                 {
                     Identification = 12345,
+                    TypeOfDocument = "CC",
                     Name = "Luis",
                     Lastname = "Gutierrez",
                     Cellphone = "3004398765",
@@ -202,6 +203,7 @@ namespace PetCareWebAPI.DAL
                 _context.Adopters.Add(new Adopter
                 {
                     Identification = 67890,
+                    TypeOfDocument = "CC",
                     Name = "Maria",
                     Lastname = "Lopez",
                     Cellphone = "3001234567",
@@ -218,6 +220,7 @@ namespace PetCareWebAPI.DAL
                 _context.Adopters.Add(new Adopter
                 {
                     Identification = 24680,
+                    TypeOfDocument = "CC",
                     Name = "Laura",
                     Lastname = "Perez",
                     Cellphone = "3109876543",
@@ -234,6 +237,7 @@ namespace PetCareWebAPI.DAL
                 _context.Adopters.Add(new Adopter
                 {
                     Identification = 54321,
+                    TypeOfDocument = "CC",
                     Name = "Ana",
                     Lastname = "Martinez",
                     Cellphone = "3194321290",
@@ -250,6 +254,7 @@ namespace PetCareWebAPI.DAL
                 _context.Adopters.Add(new Adopter
                 {
                     Identification = 98765,
+                    TypeOfDocument = "CC",
                     Name = "Carlos",
                     Lastname = "Garcia",
                     Cellphone = "3204598765",
@@ -274,6 +279,7 @@ namespace PetCareWebAPI.DAL
                 _context.Psichologists.Add(new Psichologist 
                 {
                     Identification = 76321,
+                    TypeOfDocument = "CC",
                     Name = "Andrés",
                     Lastname = "Zuluaga",
                     Cellphone = "3208765123",
@@ -289,6 +295,7 @@ namespace PetCareWebAPI.DAL
                 _context.Psichologists.Add(new Psichologist
                 {
                     Identification = 66623,
+                    TypeOfDocument = "CC",
                     Name = "Jairo",
                     Lastname = "Mosquera",
                     Cellphone = "3202356789",
@@ -304,6 +311,7 @@ namespace PetCareWebAPI.DAL
                 _context.Psichologists.Add(new Psichologist
                 {
                     Identification = 62323,
+                    TypeOfDocument = "CC",
                     Name = "Manuela",
                     Lastname = "Mosquera",
                     Cellphone = "3235678943",
@@ -327,6 +335,7 @@ namespace PetCareWebAPI.DAL
                 _context.Vets.Add(new Vet
                 {
                     Identification = 31241,
+                    TypeOfDocument = "CC",
                     Name = "Karen",
                     Lastname = "Osorio",
                     Cellphone = "3008705123",
@@ -342,6 +351,7 @@ namespace PetCareWebAPI.DAL
                 _context.Vets.Add(new Vet
                 {
                     Identification = 34145,
+                    TypeOfDocument = "CC",
                     Name = "Mariangel",
                     Lastname = "Cardenas",
                     Cellphone = "3109876523",
@@ -357,6 +367,7 @@ namespace PetCareWebAPI.DAL
                 _context.Vets.Add(new Vet
                 {
                     Identification = 34555,
+                    TypeOfDocument = "CC",
                     Name = "Marcela",
                     Lastname = "Muñoz",
                     Cellphone = "3176523123",
