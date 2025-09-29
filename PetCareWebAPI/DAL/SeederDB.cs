@@ -45,7 +45,7 @@ namespace PetCareWebAPI.DAL
                     Weight = 20,
                     Status = 0,
                     genero = 0,
-                    Tipo = (Pet.Types)1
+                    Tipo = (Pet.Types)1                    
                 });
 
                 _context.Pets.Add(new Pet
@@ -197,7 +197,8 @@ namespace PetCareWebAPI.DAL
                     MoneyIncome = 3000000,
                     Ocupation = "Teacher",
                     Password = "12345",
-                    userType = (Enums.UserType)1
+                    userType = (Enums.UserType)1,
+                    AuthId = null
                 });
 
                 _context.Adopters.Add(new Adopter
@@ -214,7 +215,8 @@ namespace PetCareWebAPI.DAL
                     MoneyIncome = 5000000,
                     Ocupation = "Engineer",
                     Password = "12345",
-                    userType = (Enums.UserType)1
+                    userType = (Enums.UserType)1,
+                    AuthId = null
                 });
 
                 _context.Adopters.Add(new Adopter
@@ -231,7 +233,8 @@ namespace PetCareWebAPI.DAL
                     MoneyIncome = 6000000,
                     Ocupation = "Artist",
                     Password = "12345",
-                    userType = (Enums.UserType)1
+                    userType = (Enums.UserType)1,
+                    AuthId = null
                 });
 
                 _context.Adopters.Add(new Adopter
@@ -248,7 +251,8 @@ namespace PetCareWebAPI.DAL
                     MoneyIncome = 4000000,
                     Ocupation = "Doctor",
                     Password = "12345",
-                    userType = (Enums.UserType)1
+                    userType = (Enums.UserType)1,
+                    AuthId = null
                 });
 
                 _context.Adopters.Add(new Adopter
@@ -265,7 +269,8 @@ namespace PetCareWebAPI.DAL
                     MoneyIncome = 2800000,
                     Ocupation = "Nurse",
                     Password = "12345",
-                    userType = (Enums.UserType)1
+                    userType = (Enums.UserType)1,
+                    AuthId = null
                 });
 
                 await _context.SaveChangesAsync();
@@ -289,7 +294,8 @@ namespace PetCareWebAPI.DAL
                     AgeExperiencie = 10,
                     ProfessionalCard = "00001",
                     Password = "12345",
-                    userType = 0
+                    userType = 0,
+                    AuthId = null
                 });
 
                 _context.Psichologists.Add(new Psichologist
@@ -305,7 +311,8 @@ namespace PetCareWebAPI.DAL
                     AgeExperiencie = 7,
                     ProfessionalCard = "00002",
                     Password = "12345",
-                    userType = 0
+                    userType = 0,
+                    AuthId = null
                 });
 
                 _context.Psichologists.Add(new Psichologist
@@ -321,7 +328,8 @@ namespace PetCareWebAPI.DAL
                     AgeExperiencie = 7,
                     ProfessionalCard = "00003",
                     Password = "12345",
-                    userType = 0
+                    userType = 0,
+                    AuthId = null
                 });
 
                 await _context.SaveChangesAsync();
@@ -345,7 +353,8 @@ namespace PetCareWebAPI.DAL
                     AgeExperiencie = 9,
                     Specialization = "Cirugía",
                     Password = "12345",
-                    userType = 0
+                    userType = 0,
+                    AuthId = null
                 });
 
                 _context.Vets.Add(new Vet
@@ -361,7 +370,8 @@ namespace PetCareWebAPI.DAL
                     AgeExperiencie = 6,
                     Specialization = "Fisioterapia",
                     Password = "12345",
-                    userType = 0
+                    userType = 0,
+                    AuthId = null
                 });
 
                 _context.Vets.Add(new Vet
@@ -377,7 +387,8 @@ namespace PetCareWebAPI.DAL
                     AgeExperiencie = 6,
                     Specialization = "Cirugía",
                     Password = "12345",
-                    userType = 0
+                    userType = 0,
+                    AuthId = null
                 });
 
                 await _context.SaveChangesAsync();

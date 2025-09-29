@@ -42,5 +42,7 @@ namespace PetCareWebAPI.DAL.Entities
         public DateTime Borndate { get; set; }
 
         public UserType userType { get; set; }
+
+        public string AuthId { get; set; } = null;
     }
 }
