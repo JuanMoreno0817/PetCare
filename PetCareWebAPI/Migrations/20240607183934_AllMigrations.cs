@@ -15,15 +15,15 @@ namespace PetCareWebAPI.Migrations
                 name: "Persons",
                 columns: table => new
                 {
-                    Identification = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Lastname = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Cellphone = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Identification = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Lastname = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    Cellphone = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
                     Address = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Borndate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    userType = table.Column<int>(type: "int", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Borndate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    userType = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,10 +57,10 @@ namespace PetCareWebAPI.Migrations
                 name: "Adopter",
                 columns: table => new
                 {
-                    Identification = table.Column<int>(type: "int", nullable: false),
-                    Ocupation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HouseType = table.Column<int>(type: "int", nullable: false),
-                    MoneyIncome = table.Column<double>(type: "float", nullable: false)
+                    Identification = table.Column<int>(type: "int", nullable: true),
+                    Ocupation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HouseType = table.Column<int>(type: "int", nullable: true),
+                    MoneyIncome = table.Column<double>(type: "float", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -77,9 +77,9 @@ namespace PetCareWebAPI.Migrations
                 name: "Psichologist",
                 columns: table => new
                 {
-                    Identification = table.Column<int>(type: "int", nullable: false),
+                    Identification = table.Column<int>(type: "int", nullable: true),
                     ProfessionalCard = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AgeExperiencie = table.Column<int>(type: "int", nullable: false)
+                    AgeExperiencie = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -96,9 +96,9 @@ namespace PetCareWebAPI.Migrations
                 name: "Vet",
                 columns: table => new
                 {
-                    Identification = table.Column<int>(type: "int", nullable: false),
-                    Specialization = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AgeExperiencie = table.Column<int>(type: "int", nullable: false)
+                    Identification = table.Column<int>(type: "int", nullable: true),
+                    Specialization = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AgeExperiencie = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

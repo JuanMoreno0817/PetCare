@@ -5,7 +5,6 @@ namespace PetCareWebAPI.DAL.Entities
     public class Vet : Person
     {
         [Display(Name = "Especialización")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Specialization { get; set; }
         public int AgeExperiencie { get; set; }
     }
