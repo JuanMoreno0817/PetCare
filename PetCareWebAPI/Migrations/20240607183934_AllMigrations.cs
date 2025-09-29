@@ -24,7 +24,8 @@ namespace PetCareWebAPI.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Borndate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    userType = table.Column<int>(type: "int", nullable: true)
+                    userType = table.Column<int>(type: "int", nullable: true),
+                    AuthId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
