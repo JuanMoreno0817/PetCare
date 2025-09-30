@@ -31,11 +31,9 @@ namespace PetCareWebAPI.DAL.Entities
         public string Address { get; set; }
 
         [Display(Name = "Correo Electronico")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Email { get; set; }
 
         [Display(Name = "Contraseña")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Password { get; set; }
 
         [Display(Name = "Fecha Nacimiento")]
